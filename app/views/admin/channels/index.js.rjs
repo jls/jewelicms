@@ -1,0 +1,7 @@
+if @channels.length == 1
+  page.redirect_to(new_admin_article_path(:channel_id => @channels.first.id))
+else 
+  page.replace_html 'new-post-channels-list', :partial => "new_article_list"
+  page.call("jewely.admin.positionChannelList")
+  page.toggle 'new-post-channels-list'
+end

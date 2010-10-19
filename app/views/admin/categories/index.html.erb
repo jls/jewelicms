@@ -1,0 +1,31 @@
+<h2>Categories</h2>
+
+<% if @categories.length != 0 -%>
+	<table>
+	  <tr>
+	    <th>Name</th>
+	    <th>Channel</th>
+	    <th>Slug</th>
+	    <th>Actions</th>
+	  </tr>
+	  <% @categories.each do |category| -%>
+	    <tr>
+	      <td><%= category.name %></td>
+	      <td><%= category.channel.name %></td>
+	      <td><%= category.slug %></td>
+	      <td><%= link_to 'Edit', edit_admin_category_path(category)%> | <%= link_to 'Delete', admin_category_path(category), :method => :delete, :confirm => "Deleting a category does NOT delete any articles using that category. Are you sure?" %>
+		</td>
+	    </tr>
+	  <% end %>
+	</table>
+<% else %>
+	<p class="no-content">None yet.</p>
+<% end %>
+
+<%= link_to 'New Category', new_admin_category_path, :class=>"action-style" %>
+
+<%= render :partial => "admin/help/hint", :locals => { 
+	:hint => "<p>Each content channel can have their own categories e.g. 'portfolio' could have 'client work' and 'personal work' while 'blog' may have 'news', 'general', and 'rants'.</p>
+	"
+	} 
+-%>

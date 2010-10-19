@@ -1,0 +1,4 @@
+<% content_for :head do -%>
+  <%= stylesheet_link_tag "#{@render_as.name.downcase}.css" %>
+<% end -%>
+<%= render(:partial => "templates/#{@render_as.name.downcase}_item", :locals => {:article => @article})%>

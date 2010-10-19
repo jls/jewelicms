@@ -1,0 +1,62 @@
+<h2>New Article for <%= @article.channel.name -%> Channel</h2>
+<%= error_messages_for :article %>
+
+<% form_for @article, :url => (@article.new_record?) ? admin_articles_path : admin_article_path(@article) do |f| %>
+  <div id="article-fields" class="span-12 append-12 last">
+    <%= f.hidden_field :channel_id %>
+    <p>
+      <label for="article_title">Title</label><br/>
+      <%= f.text_field :title, :size => "50", :onkeyup => "jewely.admin.updateSlug();" %>
+    </p>
+    <p>
+      <label for="article_slug">Slug</label><br/>
+      <%= f.text_field :slug, :size => "50" %><br/>
+      <span class="note">Leave blank to have it generated for you</span>
+    </p>
+    <p>
+      <% fields_for :data_values do |data_values| -%>
+    
+        <% @article.channel.data_fields.each do |data_field| -%>
+    
+          <label><%= data_field.label %></label><br/>
+      
+          <% if data_field.data_field_type_id == 1 -%>
+            <%= data_values.text_field data_field.id, :value => (@article.data_values.find_by_data_field_id(data_field.id).data_value rescue nil)-%>
+          <% else -%>
+        
+            <%= data_values.text_area data_field.id, :size => "60x10", :class => 'rich-edit-text', :value => (@article.data_values.find_by_data_field_id(data_field.id).data_value rescue nil) %>
+          <% end -%>
+          <br/>
+        <% end -%>
+      <% end -%>
+    </p>
+  </div>
+  <div id="article-options" class="span-12 append-12 last">
+  	<fieldset>
+  		<legend>Options</legend>
+  			<fieldset>
+  				<legend>Categories</legend>	
+  				<% if @article.channel.categories.length != 0 %>
+  				    <ul>
+  				      <% @article.channel.categories.each do |category| -%>
+  			  	      <li>
+  			  	        <%= check_box_tag "article[category_ids][]", category.id, @article.categories.include?(category) -%> <%= category.name -%>
+  			  	      </li>
+  				      <% end -%>
+  			      	</ul>
+  				<% else %>
+  					No categories have been created to assign. You can create a 
+  				<% end %>
+  				<%= link_to 'New Category', new_admin_category_path(:channel_id => @article.channel) %>
+  			</fieldset>
+  			<fieldset>
+  				<legend>Status</legend>
+  		    <%= f.check_box :is_published %><label for="article_is_published">Published</label>
+  			</fieldset>
+  	</fieldset>  
+  </div>
+  <div id="preview-container"></div>
+  <%= f.submit 'Save as Draft', :onclick => "document.getElementById('article_is_published').checked=false; return true;" -%>
+  <%= f.submit 'Save and Publish', :onclick => "document.getElementById('article_is_published').checked=true; return true;"%>
+  <%= link_to_function('Preview', "jewely.admin.previewArticle()")%>
+<% end -%>

@@ -1,0 +1,15 @@
+# 1.Copy this file to config/initializers/rakismet.rb
+# 2. Complete the information below with the info you
+#    received from Wordpress.
+
+# This is the key that you obtained from 
+# wordpress.com/api-keys
+Rakismet::KEY  = 'key-goes-here'
+
+# This is the URL that your website will
+# be sitting at.
+Rakismet::URL  = 'url-goes-here'
+
+# Can be left as is unless you wish to use
+# a different Akismet host.
+Rakismet::HOST = 'rest.akismet.com'

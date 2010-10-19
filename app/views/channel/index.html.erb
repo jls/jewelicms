@@ -1,0 +1,7 @@
+<% content_for :head do -%>
+  <%= stylesheet_link_tag "#{@render_as.slug}.css" %>
+  <% unless @render_as == @channel -%>
+    <%= stylesheet_link_tag "#{@channel.slug}.css"%>
+  <% end -%>
+<% end -%>
+<%= render(:partial => "templates/#{@render_as.slug}_list", :locals => {:articles => @articles})%>

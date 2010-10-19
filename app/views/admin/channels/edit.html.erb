@@ -1,0 +1,33 @@
+<h2>Edit Channel</h2>
+<%= error_messages_for :channel %>
+
+<% form_for @channel, :url => (@channel.new_record?) ? admin_channels_path : admin_channel_path(@channel) do |f| %>
+  <fieldset>
+    <legend>Freshy Fresh</legend>
+    <p>
+      <label for="channel_name">Name</label><br/>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <label for="channel_slug">Slug</label><br/>
+      <%= f.text_field :slug %><br/>
+      <span class="note">Leave blank to have it generated for you.</span>
+    </p>
+    <p>
+      <%= f.check_box :is_public %>
+      <label for="channel_is_public">Is Public?</label>
+    </p>
+    <p>
+	  <fieldset>
+		<legend>Advanced</legend>
+      <label for="channel_renders_as_channel_id">Renders Same As</label>
+      <%= f.collection_select :renders_as_channel_id, Channel.find(:all), :id, :name, :include_blank => true %><br/>
+      <span class="note">Leave blank to use the templates with the same name as this channel.</span>
+	    </fieldset>
+    </p>
+
+    <%= f.submit %>
+    <%= link_to 'Delete Channel', admin_channel_path(@channel), :method => :delete, :confirm => "Are you absolutely sure?\n\nThis will DESTROY ALL Articles (#{@channel.articles.count}) that are saved in this channel" %>
+    or <%= link_to 'cancel and return to channels list', admin_channels_path %>
+  </fieldset>
+<% end %>

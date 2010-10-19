@@ -1,0 +1,39 @@
+<div id="settings-primary" class="span-18 append-1">
+<h2>Settings</h2>
+
+	<table>
+	  <tr> 
+		<th>Login (<%= link_to '?', '#', :class=>"help-item not-implemented"%>)</th>
+	    <th>Real Name</th>
+	    <th>Email (<%= link_to '?', '#', :class=>"help-item not-implemented"%>)</th>
+	    <th>Actions</th>
+	  </tr>
+	<!-- begin loop -->
+	    <tr>
+	      <td>jls</td>
+	      <td>James Smith</td>
+	      <td>jlsmith@gmail.com</td>
+		  <td><%= link_to 'Edit', '#'%> | <%= link_to 'Delete', '#', :class=>"not-implemented"%></td>
+	    </tr>
+	
+	    <tr>
+	      <td>storypixel</td>
+	      <td>Sam Wilson</td>
+	      <td>storypixel@gmail.com</td>
+		  <td><%= link_to 'Edit', '#'%> | <%= link_to 'Delete', '#', :class=>"not-implemented"%></td>
+	    </tr>
+	<!-- end loop -->
+	
+	</table>
+
+<%= link_to 'New User', "#", :class=>"action-style" %>
+</div>
+
+<div id="settings-menu" class="span-5 last">
+	<div id="settings-menu-inner">
+	<ul>
+		<li id="general-tab"><%= link_to 'General', '/admin/settings'%></li>
+		<li id="users-tab"><%= link_to 'Users', '/admin/settings/new'%></li>
+	</ul>
+	</div>
+</div>

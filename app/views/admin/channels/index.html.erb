@@ -1,0 +1,29 @@
+<h2>Channels</h2>
+
+<% if @channels.length != 0 -%>
+	<table>
+	  <tr>
+	    <th>Name</th>
+	    <th>Slug <!-->(<%= link_to '?', '#', :class=>"help-item not-implemented"%>)--></th>
+	    <th>Public <!-->(<%= link_to '?', '#', :class=>"help-item not-implemented"%>)--></th>
+	    <th>Article Fields (<%= link_to 'See all', admin_data_fields_path %>)</th>
+	    <th>Actions</th>
+	  </tr>
+	  <% @channels.each do |channel| -%>
+	    <tr>
+	      <td><%= channel.name %></td>
+	      <td><%= channel.slug %></td>
+	      <td><%= (channel.is_public?) ? "Yes" : "No" %></td>
+	      <td><%= channel.data_fields.map(&:label).join(", ") %> <%= link_to 'Edit', admin_data_fields_path(:channel_id => channel)%></td>
+	      <td><%= link_to 'New Article', new_admin_article_path(:channel_id => channel) %> | <%= link_to 'Edit', edit_admin_channel_path(channel)%> | <%= link_to 'Delete', admin_channel_path(channel), :method => :delete, :confirm => "Deleting a channel deletes all articles associated with that channel. Are you sure?" %>
+		</td>
+	    </tr>
+	  <% end %>
+	</table>
+<% else %>
+	<p class="no-content">None yet.</p>
+<% end %>
+
+
+
+<%= link_to 'New Channel', new_admin_channel_path, :class=>"action-style" %>

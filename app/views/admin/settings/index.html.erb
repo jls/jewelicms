@@ -1,0 +1,27 @@
+<div id="settings-primary" class="span-18 append-1">
+<h2>Settings</h2>
+
+<fieldset>
+<legend>Basics</legend>
+<label for="article_slug">Name of blog</label><br/> 
+    <input id="article_slug" name="article[slug]" size="50" type="text" value="Jewely Admin" />
+	<br/>
+	<input id="article_is_published" name="article[is_published]" type="checkbox" value="2" checked="checked" /><label for="article_is_published">Public?</label> 
+</fieldset>
+
+<fieldset>
+<legend>Jewely help</legend>
+<input id="article_is_published" name="article[is_published]" type="checkbox" value="1" /><label for="article_is_published">Show beginner's hints?</label> 
+</fieldset>
+
+</div>
+
+
+<div id="settings-menu" class="span-5 last">
+	<div id="settings-menu-inner">
+	<ul>
+		<li id="general-tab"><%= link_to 'General', '/admin/settings'%></li>
+		<li id="users-tab"><%= link_to 'Users', admin_users_path %></li>
+	</ul>
+	</div>
+</div>

@@ -1,0 +1,37 @@
+<h2>Recent activity</h2>
+
+<div class="span-18">
+
+<% if @comments.blank? && @articles.blank? -%>
+<p>None in the last week.</p>
+<!-->	<p>Every great dream begins with a dreamer. Always remember, you have within you the strength, the patience, and the passion to reach for the stars to change the world. (<em>Harriet Tubman</em>)</p>-->
+<% else -%>
+<ul id="common-tasks">
+    <% @comments.each do |comment| -%>
+      <li><a href="#" class="new comment"><%= comment.body %></a> by <span class="author"><%= comment.name%></span> <span class="time"><%= time_ago_in_words(comment.created_at) %> ago</li>
+    <% end -%>
+    <% @articles.each do |article| -%>
+
+      <li><%= link_to article.title, edit_admin_article_path(article), :class => "new article"%> added in <a href="#" class="channel"><%= article.channel.name %></a> by <span class="author"><%= article.author.name%></span> <span class="time"><%= time_ago_in_words(article.created_at) %> ago</li>
+    <% end -%>
+    <% @channels.each do |channel| -%>
+      <li>A new channel <a href="#" class="new channel"><%= channel.name %></a> created <span class="time"><%= time_ago_in_words(channel.created_at) %> ago</li>
+    <% end -%>
+    <% @users.each do |user| -%>
+      <li>A new user <a href="#" class="new user"><%= user.name %></a> joined <span class="time"><%= time_ago_in_words(user.created_at) %> ago</li>
+    <% end -%>
+</ul>
+<% end -%>
+
+<%= render :partial => "admin/help/hint", :locals => { 
+	:topic => "Jewels of Wisdom",
+	:hint => "<p>Here is some Jewely lingo for concepts you're already familiar with. An <strong>article</strong> is a post you make e.g. '5 cool card tricks'. A <strong>channel</strong> is a pre-planned place you'll make articles e.g. 'Blog', 'Portfolio' and so on. A <strong>data field</strong> is a field you see when making a <strong>article</strong> like 'Body'. A <strong>category</strong> is an optional tag you use to help categorize your articles 'Funny' etc.</p>
+	"
+	} 
+-%>	
+
+
+</div>
+
+<div class="span-6 last">
+</div>

@@ -1,0 +1,33 @@
+<div id="settings-primary" class="span-18 append-1">
+  <h2>Settings</h2>
+  <h3>Users</h3>
+  <table>
+	  <tr> 
+		  <th>Login (<%= link_to '?', '#', :class=>"help-item not-implemented"%>)</th>
+	    <th>Real Name</th>
+	    <th>Email (<%= link_to '?', '#', :class=>"help-item not-implemented"%>)</th>
+	    <th>Actions</th>
+	  </tr>
+    <% @users.each do |user| -%>
+	    <tr>
+	      <td><%= user.login %></td>
+	      <td><%= user.name %></td>
+	      <td><%= user.email %></td>
+		    <td>
+		      <%= link_to 'Edit', edit_admin_user_path(user) %> | 
+		      <%= link_to 'Delete', admin_user_path(user), :method => :delete %>
+		    </td>
+	    </tr>
+	  <% end -%>
+	</table>
+
+<%= link_to 'New User', new_admin_user_path, :class=>"action-style" %>
+</div>
+
+<div id="settings-menu" class="span-5 last">
+	<div id="settings-menu-inner">
+	<ul>
+		<li id="users-tab"><%= link_to 'Users', admin_users_path %></li>
+	</ul>
+	</div>
+</div>

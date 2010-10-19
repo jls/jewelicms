@@ -1,0 +1,49 @@
+<!-- Where is the rest of the layout? This chunk is included by /app/views/layouts/application.html.erb so edit that page to affect the overall structure -->
+<div id="main">
+	<% Article.get(:slug => params[:article_slug]).each do |article| %>
+		<div class="article">	
+			<h2><%= article.title %></h2>
+			<div class="info">
+			  Published <%= time_ago_in_words(article.created_at) %> ago
+			  to 
+			  <% article.categories.each do |cat| -%>
+			<!-->	<%= link_to cat.name, "/archive/#{cat.slug}"%> -->
+				<%= cat.name %>
+			  <% end -%>
+			</div>
+			<div class="article-main">
+				<div class="summary">
+				  <%= article.value_for("summary")%>				
+				</div>
+				<span class="spur"></span>
+				<div class="article-text">			  
+				  <%= article.value_for("body") %>
+				</div>
+			</div>
+		</div>
+		<!-->
+		<div id="comments">
+			<h2>Feedback</h2>
+			<% unless article.comments.empty? -%>
+  			<ul id="comment-list">
+  			  <% article.comments.each do |comment| -%>
+    				<li class="group">
+    					<span class="commenter-info"><%= link_to comment.name, comment.author_url %> said <%= time_ago_in_words(comment.created_at)%> ago:</span>	
+    					<span class="comment-body">
+    						<%= comment.body %>
+    					</span>
+    				</li>
+  				<% end -%>
+  			</ul>
+  		<% end -%>
+		</div>
+		<div id="comment-form">
+		  <%= render(:partial => "comments/form") %>
+		</div>
+		-->
+	<% end %>
+</div>
+
+
+
+

@@ -1,0 +1,36 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+hello_world_summary_value:
+  article: blog_hello_world_article
+  data_field: blog_summary_field
+  data_value: How do you summarize hello world?
+  
+hello_world_body_value:
+  article: blog_hello_world_article
+  data_field: blog_body_field
+  data_value: <h1>Hello World.  You look beautiful!</h1>
+
+ruby_is_great_summary_value:
+  article: blog_ruby_is_great_article
+  data_field: blog_summary_field
+  data_value: <h2>Ruby is...</h2>
+  
+ruby_is_great_body_value:
+  article: blog_ruby_is_great_article
+  data_field: blog_body_field
+  data_value: <h3>GREAT!</h3>
+  
+little_red_riding_hood_summary_value:
+  article: stories_little_red_riding_hood
+  data_field: stories_summary_field
+  data_value: On the way to grandma's house
+
+little_red_riding_hood_body_value:
+  article: stories_little_red_riding_hood
+  data_field: stories_body_field
+  data_value: Wolf was there waiting
+  
+little_red_riding_hood_notes_value:
+  article: stories_little_red_riding_hood
+  data_field: stories_notes_field
+  data_value: Classic Childrens Book

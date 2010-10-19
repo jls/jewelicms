@@ -1,0 +1,24 @@
+<h2>New Channel</h2>
+<%= error_messages_for :channel %>
+
+<% form_for @channel, :url => (@channel.new_record?) ? admin_channels_path : admin_channel_path(@channel) do |f| %>
+  <fieldset>
+    <legend>Freshy Fresh</legend>
+    <p>
+      <label for="channel_name">Name</label><br/>
+      <%= f.text_field :name %>
+      <% fields_for :copy do |copy_fields| -%>
+        from existing? 
+        <%= copy_fields.collection_select :channel_id, Channel.find(:all), :id, :name,  :prompt => "No" %>
+      <% end -%>
+    </p>
+    <%= f.submit %>
+  </fieldset>
+<%= render :partial => "admin/help/hint", :locals => { 
+	:hint => '<p>Choosing to create a channel "from existing" could save you time because the fresh channel will copy over all data fields from another specified channel.</p>
+	<p>A <strong>data field</strong> is just a field you see when you make a new article. For example, "blog" channel would probably have a field called "summary"; "gallery" channel could have a "caption" data field.</p>
+	'
+	} 
+-%>
+
+<% end %>

@@ -1,0 +1,29 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+blog_channel:
+  name: My Blog
+  slug: my-blog
+  is_public: true
+  render_as: 
+  publishes_to_home_page: true
+
+stories_channel:
+  name: Stories
+  slug: stories
+  is_public: true
+  render_as: blog_channel
+  publishes_to_home_page: false
+
+gallery_channel:
+  name: Gallery
+  slug: gallery
+  is_public: true
+  render_as:
+  publishes_to_home_page: false
+  
+drafts_channel:
+  name: Drafts
+  slug: drafts
+  is_public: false
+  render_as:
+  publishes_to_home_page: false

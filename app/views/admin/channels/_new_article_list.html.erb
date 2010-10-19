@@ -1,0 +1,11 @@
+<div>
+<ul>
+  <% if @channels.empty? -%>
+    <li>First, <%= link_to 'create a channel', new_admin_channel_path %></li>
+  <% else -%>
+    <% @channels.each do |channel| -%>
+      <li><%= link_to channel.name, new_admin_article_path(:channel_id => channel.id), :title =>  "#{channel.name} channel" %></li>
+    <% end -%>
+  <% end -%>
+</ul>
+</div>

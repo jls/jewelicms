@@ -1,0 +1,36 @@
+<h2>Comments</h2>
+
+<% if @comments.length != 0 -%>
+	<table>
+	  <tr>
+	    <th>Name</th>
+	    <th>Email</th>
+	    <th>Body</th>
+	    <th>Article</th>
+	    <th>Spam?</th>
+	    <th>Actions</th>
+	  </tr>
+	  <% @comments.each do |comment| -%>
+	    <tr>
+	      <td><%= comment.name %></td>
+	      <td><%= comment.email %></td>
+	      <td><%= h comment.body %></td>
+	      <td><%= comment.article.title %></td>
+	      <td><%= comment.is_spam? %></td>
+	      <td>
+	        <% if comment.is_spam? -%>
+	          <%= link_to 'Not Spam', not_spam_admin_comment_path(comment), :method => :post %>
+	        <% else -%>
+	          <%= link_to('Publish', publish_admin_comment_path(comment)) unless comment.is_published %>
+	        <% end -%> | 
+	        <%= link_to 'Delete', admin_comment_path(comment), :method => :delete, :confirm => "Are you sure?"%> |
+	        <%= link_to 'Mark as Spam', spam_admin_comment_path(comment), :method => :post, :confirm => "This will mark this comment as spam and delete it.  Are you sure?"%>
+	      </td>
+	    </tr>
+	  <% end %>
+	</table>
+<% else %>
+	<p class="no-content">No comments at this time...</p>
+<% end %>
+
+<p><%= will_paginate @comments %></p>
