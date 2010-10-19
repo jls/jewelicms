@@ -1,7 +1,7 @@
 ## Quickstart
 
-    git clone http://github.com/jls/jewely.git
-    cd jewely
+    git clone http://github.com/jls/jewelycms.git
+    cd jewelycms
     cp config/database.yml.template config/database.yml
     sudo rake gems:install
     rake db:setup
