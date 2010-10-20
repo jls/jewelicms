@@ -19,6 +19,14 @@ label {
 	text-transform: capitalize;
 }
 
+#article-options fieldset {
+	background: rgba(180,180,180,.3);	
+}
+
+#article-fields textarea, #article-fields input{
+	width: 100%;
+}
+
 	/* Lists */
 
 ul {
@@ -47,48 +55,48 @@ ul#common-tasks .time {
 	/*margin-left: 30px;*/
 }
 
-#nav ul {
-	margin: 0 0 0 0;
-	padding: 0 0 0 0;
-}
+	#nav ul {
+		margin: 0 0 0 0;
+		padding: 0 0 0 0;
+	}
 
-#nav ul li {
-	display: inline;
-	margin-right: 10px;
-}
+	#nav ul li {
+		display: inline;
+		margin-right: 10px;
+	}
 
 
-#nav li {
-	text-transform: uppercase;
-	font-size: 1em;
-}
+	#nav li {
+		text-transform: uppercase;
+		font-size: 1em;
+	}
 
-#nav li a {
-	padding-top: 12px;
-	text-decoration: none;	
-}
+	#nav li a {
+		padding-top: 12px;
+		text-decoration: none;			
+	}
 
-#nav li a.action-style {
-	-moz-border-radius-topleft: 0;
-	-webkit-border-top-left-radius: 0;	
-	-moz-border-radius-topright: 0;
-	-webkit-border-top-right-radius: 0;	
-}
+	#nav li a.action-style {
+		-moz-border-radius-topleft: 0;
+		-webkit-border-top-left-radius: 0;	
+		-moz-border-radius-topright: 0;
+		-webkit-border-top-right-radius: 0;	
+	}
 
-body #nav li a.action-style {
-	color: #fff;
-}
+	body #nav li a.action-style {
+		color: #fff;
+	}
 
-body #nav li a.action-style.secondary {
-	text-transform: lowercase;
-	text-decoration: underline;
-	color: rgba(25,25,25,.5);	
-	border-bottom: 1px solid rgba(25,25,25,.7);
-}
+	body #nav li a.action-style.secondary {
+		text-transform: lowercase;
+		text-decoration: underline;
+		color: rgba(25,25,25,.5);	
+		border-bottom: 1px solid rgba(25,25,25,.7);
+	}
 
-body #nav li a.action-style.secondary:hover {
-	opacity: .75;	
-}
+	body #nav li a.action-style.secondary:hover {
+		opacity: .75;	
+	}
 
 
 
@@ -293,13 +301,7 @@ h4 {
 	background: rgba(90,90,90,.0);
 }
 
-#article-options fieldset {
-	background: rgba(180,180,180,.3);	
-}
 
-#article-fields textarea, #article-fields input{
-	width: 100%;
-}
 
 /* New Post - Channel List */
 #new-post-channels-list{
@@ -309,28 +311,31 @@ h4 {
 	z-index:100;
 	display: inline-block;
 	background: transparent url(/images/admin/menu-connector-1.png) no-repeat top 10px;	
-	
 }
 
-#new-post-channels-list a{
-	color: #fff;
-	text-decoration:none;
-}
+	#new-post-channels-list ul{
+		min-width: 80px;
+		padding: 10px 10px 5px 10px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;	
+		background: rgba(25,25,25,.9);
+		-moz-box-shadow: 0 1px 3px #999;
+		-webkit-box-shadow: 0 1px 3px #999;	
+		list-style: none;
+	}
 
-#new-post-channels-list a:hover{
-	text-decoration:underline;
-}
+	#new-post-channels-list ul li{
+		color: #c0c0c0;
+	}
 
-#new-post-channels-list ul{
-	min-width: 80px;
-	padding: 10px 10px 5px 10px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;	
-	background: rgba(25,25,25,.9);
-	-moz-box-shadow: 0 1px 3px #999;
-	-webkit-box-shadow: 0 1px 3px #999;	
-	list-style: none;
-}
+	#new-post-channels-list a{
+		color: #fff;
+		text-decoration:none;
+	}
+
+	#new-post-channels-list a:hover{
+		text-decoration:underline;
+	}
 
 /* Classes */
 .not-implemented {
@@ -356,10 +361,7 @@ h4 {
 	background: #FFFFFF; /* old browsers */
 	background: -moz-linear-gradient(top, #FFFFFF 0%, #DADADA 28%, #DADADA 75%, #FFFFFF 100%); /* firefox */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(28%,#DADADA), color-stop(75%,#DADADA), color-stop(100%,#FFFFFF)); /* webkit */
-
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#FFFFFF',GradientType=0 ); /* ie */	
-
-
 }
 
 #settings-menu-inner {
@@ -426,5 +428,4 @@ body.settings.new #settings-menu ul li#users-tab a {
 
 #settings-menu ul li a:hover {
 	opacity: .6;
-	
 }
