@@ -3,7 +3,7 @@
 <ul>
 
 	<!-- The loop which outputs your summarized article listings -->
-	<% Article.get(:fromurl => :urlparts).each do |article| %>
+	<% Article.get(:from_url => :params).each do |article| %>
 		<article>
 			<%= link_to article.title, "/read/#{article.slug}"%> 
 			<!-- get the summary custom field if it exists -->
