@@ -21,11 +21,7 @@
 	    <tr <%= "class=\"#{prev_style}\""%>>
 	      <td><%= article.channel.name %></td>
 	      <td><%= article.title %></td>
-		<% begin %>
-		  <td><%= link_to article.author.name, edit_admin_user_path(article.author) %></td>	
-		<% rescue %>
-		  <td>No author credited</td>	
-		<% end %>
+	      <td><%= article.author ? link_to(article.author.name, edit_admin_user_path(article.author)) : 'No author credited' %></td>
 	      <td><%= article.categories.map(&:name).join(", ") unless article.categories.empty? %></td>
 	      <td><%= (article.is_published?.to_s == "true") ? "yes" : "no" %></td>
 	      <td><%= link_to article.comments.count, admin_comments_path %> </td>
@@ -46,5 +42,3 @@
 	'
 	} 
 -%>
-
-<!--><p><%= link_to 'New Article', admin_channels_path, :class=>"action-style" %></p>-->
