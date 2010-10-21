@@ -40,7 +40,7 @@ class Admin::UsersController < Admin::AdminController
       @user.destroy
       flash[:notice] = "User Destroyed!"
     else
-      flash[:notice] = "There must be at least 1 user so sorry, I can't delete that person."
+      flash[:notice] = "There must be at least 1 user so, sorry, I can't delete that person."
     end
     redirect_to admin_users_path
   end
