@@ -24,7 +24,7 @@
 		<% begin %>
 		  <td><%= link_to article.author.name, edit_admin_user_path(article.author) %></td>	
 		<% rescue %>
-		  <td>No author credited</td>	
+		  <td>Author uncredited</td>	
 		<% end %>
 	      <td><%= article.categories.map(&:name).join(", ") unless article.categories.empty? %></td>
 	      <td><%= (article.is_published?.to_s == "true") ? "yes" : "no" %></td>
