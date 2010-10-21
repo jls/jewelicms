@@ -9,9 +9,9 @@
       <%= f.text_field :title, :size => "50", :onkeyup => "jewely.admin.updateSlug();" %>
     </p>
     <p>
-      <label for="article_slug">Slug</label><br/>
+      <label for="article_slug">Title in the url</label><br/>
       <%= f.text_field :slug, :size => "50" %><br/>
-      <span class="note">Leave blank to have it generated for you</span>
+      <span class="note">Also known as the "slug". Leave blank to have it generated for you</span>
     </p>
     <p>
       <% fields_for :data_values do |data_values| -%>
