@@ -1,0 +1,16 @@
+<!-- included by /app/views/layouts/application.html.erb (look for the yield statement for precise part)-->
+<p>This page renders a single article. To do this, it looks at the end part of the url for the name of the article. It then recalls the correct article from the database.</p>
+<p>This portion can be found in /app/views/templates/archive.html.erb. Look at the code comments to understand how Jewely data is accessed from this page. Replace this with your own archive text and logic.</p>
+<!-- The code that lists one article that matches the first part of the url -->
+<% Article.get(:category => :urlparts.first).each do |article| %>
+	<article>
+		<h2><%= article.title -%></h2>
+		<aside>
+		<%= article.value_for("summary") %>
+		</aside>
+		<section>
+		<%= article.value_for("body") %>
+		</section>
+	</article>
+<% end %>
+<!-- end loop -->

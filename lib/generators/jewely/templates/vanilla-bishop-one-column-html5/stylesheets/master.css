@@ -1,0 +1,308 @@
+/*
+!!!!! Go to end of document for CSS3 helpers. !!!!!
+*/
+
+
+/*
+NORMALIZERS
+*/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+a:focus, img {
+	outline: none; /* Removes dotted outline caused by FireFox */
+	border: none;	/* Removes purple border caused by FireFox */
+}
+
+/* Tell the browser to render HTML 5 elements as block */  
+header, footer, aside, nav, article, section {  
+    display: block;  
+}
+
+
+
+
+/*
+HEAD TAGS
+*/
+HTML {
+	background-color: #ccc;
+}
+
+BODY {
+	
+}
+
+
+
+/*
+CONTAINER
+*/
+
+#container {
+	width: 960px;
+	margin: 0 auto;
+}
+
+#content {
+	width: 960px;
+}
+
+
+
+
+/*
+HEADERS
+*/
+
+h1 {
+	
+}
+
+h2 {
+	
+}
+
+h3 {
+	
+}
+
+h4 {
+	
+}
+
+h5 {
+	
+}
+
+h6 {
+	
+}
+
+
+/*
+LINKS
+*/
+
+a {
+	color: ;
+}
+
+a:hover {
+	color: ;
+	text-decoration: none;
+}
+
+/*
+BRANDING
+*/
+
+header {
+	width: 960px;
+	height: ;
+	position: relative;
+}
+
+header div#logo a{
+	display: inline-block;
+	height: ;
+	width: ;
+	top: ;
+	left: ;
+	text-indent: -9999px;
+	/* background: url(images/logo.png) no-repeat; */
+}
+
+/*
+NAVIGATION
+*/
+
+header ul {
+	list-style: none;
+}
+
+header ul li {
+	
+}
+
+header ul li a {
+	
+}
+
+header ul li a:hover {
+	
+}
+
+
+
+/*
+ARTICLE (left side)
+*/
+
+article {
+	width: ;
+	float: left;
+	display: inline;
+}
+
+
+
+/*
+ASIDE (right side)
+*/
+
+aside {
+	width: ;
+	float: right;
+	display: inline;
+}
+
+
+
+/*
+FOOTER
+*/
+
+footer {
+	width: 960px;
+	height: ;
+}
+
+
+
+/*
+FORMS
+*/
+
+form {
+	
+}
+
+
+
+/*
+GENERICS
+*/
+
+/* this method borrowed from Dribbble. use it to clear element eg. <div id="my-content" class="group">Yada this yada that</div> */
+.group:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.clear {
+	clear: both;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+
+
+/*
+If you are using HTML5, it might also be wise to take advantage of some CSS3. 
+Below is some common CSS3 styles with the appropriate syntax.
+
+BORDERS
+___________________________
+
+BORDER IMAGE
+border-image: url(border.png) 27 27 27 27 round round;
+border-image: url(border.png) 27 27 27 27 stretch stretch; 
+
+BORDER RADIUS
+-moz-border-radius: 15px;
+-webkit-border-radius: 15px;
+border-radius: 15px;
+
+BOX SHADOW
+box-shadow: 10px 10px 5px #888;
+
+
+
+BACKGROUNDS
+___________________________
+
+MULTIPLE BACKGROUNDS
+background: 
+	url(body-top.gif) top left no-repeat, 
+	url(banner_fresco.jpg) top 11px no-repeat, 
+	url(body-bottom.gif) bottom left no-repeat, 
+	url(body-middle.gif) left repeat-y
+;
+
+BACKGROUND GRADIENTS
+background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#333333), to(#000000));
+background-image: -moz-linear-gradient(19% 75% 90deg,#000000, #333);
+
+
+
+COLORS
+___________________________
+
+OPACITY
+opacity: 0.2;
+
+RGBA Colors
+background: rgba(255, 0, 0, 0.2)
+
+
+
+
+TEXT EFFECTS
+___________________________
+
+TEXT SHADOW
+text-shadow: 2px 2px 2px #000;
+
+TEXT OVERFLOW
+text-overflow: ellipsis;
+text-overflow: clip;
+
+TEXT WRAP
+word-wrap: break-word;
+
+
+
+
+FONTS
+___________________________
+
+@FONT_FACE
+@font-face { font-family: Delicious; src: url('Delicious-Roman.otf'); }
+h3 { font-family: Delicious, sans-serif; }
+
+
+
+LAYOUT
+___________________________
+
+MULTI-COLUMN LAYOUT
+-moz-column-count: 3; 
+-moz-column-gap: 1em; 
+-moz-column-rule: 1px solid black; 
+-webkit-column-count: 3; 
+-webkit-column-gap: 1em; 
+-webkit-column-rule: 1px solid black;
+
+
+*/

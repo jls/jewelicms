@@ -1,0 +1,15 @@
+<!-- included by /app/views/layouts/application.html.erb (look for the yield statement for precise part)-->
+<p>This portion can be found in /app/views/templates/archive.html.erb. Look at the code comments to understand how Jewely data is accessed from this page. Replace this with your own archive text and logic.</p>
+<ul>
+
+	<!-- The loop which outputs your summarized article listings -->
+	<% Article.get(:fromurl => :urlparts).each do |article| %>
+		<article>
+			<%= link_to article.title, "/read/#{article.slug}"%> 
+			<!-- get the summary custom field if it exists -->
+			<%= article.value_for("summary") %>
+		</article>
+	<% end %>
+	<!-- end loop -->
+
+</ul>

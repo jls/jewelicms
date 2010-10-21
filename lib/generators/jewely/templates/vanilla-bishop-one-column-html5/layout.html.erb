@@ -1,0 +1,60 @@
+<!-- 
+
+"Vanilla Bishop" Jewely theme based on Christopher Bishop's 
+
+Copyright 2010 Christopher Bishop
+You may use this for free or commercial purposes but this header MUST REMAIN.
+You may not sell this under any situation.
+
+If you do use this on a live site, send me a link so I can see what you have done with this template.  
+Please contact me at mechwd [at] msn.com for any questions or suggestions.
+
+To learn more about HTML5 and how it should be used, visit http://diveintohtml5.org.
+-->
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<title>Untitled HTML5 Document</title>
+		<!-- delete the reset.css styles if you do not find them useful -->
+		<link href="/stylesheets/reset.css" rel="stylesheet" />
+		<!-- the core vanilla styles -->
+		<link href="/stylesheets/style.css" rel="stylesheet" />
+		
+		<!--[if IE]>
+			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<!-- include the javascripts you need. you could also write this with Rails code but I've done it in HTML for clarity for now -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>
+		<script src="/javascripts/application.js"></script>
+	</head>
+	<body>
+		<div id="container">
+			<header>
+				<h1 id="logo"><a href="#">Your Company Name</a></h1>
+				<nav>
+					<ul>
+						<li><a href="/">home</a></li>
+						<li><a href="/about">about</a></li>
+						<li><a href="/archive">archive</a></li>
+					</ul>
+				</nav>
+			</header>
+			<div id="content">
+				<%# the yield statement is a Rails thing. It looks at the url and uses that to determine what page to render. pages for this template are located in /app/views/templates/ %>
+				<article class="group">
+					<%= yield %>	
+				</article>
+				<aside class="group">
+					The aside element contains relevant but not central information
+				</aside>
+			</div>
+			<footer>
+				A footer typically contains credits and tertiary navigation, but can be used creatively for any purpose
+			</footer>
+		</div>		
+	</body>
+</html>
