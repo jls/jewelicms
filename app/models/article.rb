@@ -1,7 +1,8 @@
+require 'jewely_url'
 class Article < ActiveRecord::Base
 
   cattr_accessor :per_page
-  @@per_page = 5
+  @@per_page = 10
   
   include Sluggable
   before_validation :generate_slug
@@ -46,6 +47,7 @@ class Article < ActiveRecord::Base
   # finder options into a single method.
   # 
   # Available Options:
+  #   :from_url       -   A hash containing the url.  Usually `params`.
   #   :channel        -   String or Array of channel slugs.  This will limit the articles
   #                       returned to only the given channels.  This is an OR join so if you 
   #                       include more than one channel slug then all articles published to 
@@ -85,6 +87,13 @@ class Article < ActiveRecord::Base
       :per_page => 10,
       :page => 1
     }.merge!(options) # User options win.
+    
+    if opts[:from_url]
+      interpreter = UrlInterpreter.new opts[:from_url]
+      opts[:channel] = interpreter.channel.slug if interpreter.channel
+      opts[:category] = interpreter.category.slug if interpreter.category
+      opts[:slug] = interpreter.article.slug if interpreter.article
+    end
     
     # Normalize a few of the options values to make sure
     # we either have a string or an array of strings.

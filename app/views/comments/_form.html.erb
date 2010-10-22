@@ -1,5 +1,5 @@
 <% form_for Comment.new do |f| -%>
-  <%= f.hidden_field :article_id, :value => @article.id %>
+  <%= f.hidden_field :article_id, :value => article.id %>
   <%= f.hidden_field :return_path, :value => request.path + "#comments" %>
   <p>
     <label for="comment_name">Name</label><br/>

@@ -3,7 +3,7 @@
     <div class="flash"><%= flash[:comment_notice] %></div>
   <% end -%>
   <ul>
-    <% list.published.each do |comment| -%>
+    <% list.comments.published.each do |comment| -%>
       <li>
         <span class="author"><%= comment.name %></span>
         <span class="timestamp note"><%= time_ago_in_words(comment.updated_at) %></span>
@@ -11,5 +11,5 @@
       </li>
     <% end -%>
   </ul>
-  <%= render(:partial => "comments/form") %>
+  <%= render(:partial => "comments/form", :locals => {:article => list}) %>
 </div>

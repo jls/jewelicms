@@ -1,15 +1,33 @@
+require 'jewely_url'
 class ChannelController < ApplicationController
+
+  def home
+    @channels = Channel.all_public
+    render :template => "templates/index"
+  end
   
   def index
-    @channel = Channel.all_public.find_by_slug(params[:renders_with])
+    
+    jewely_url = JewelyUrl.new params
+  
+    @channel = jewely_url.channel
     # We don't have a channel that matches the renders_with param
     # so we assume they intend to have a matching template in the templates directory.
     # In the future we should check to see if the template exists first.
     return render(:template => "templates/#{params[:renders_with]}") unless @channel
-
-    @categories = @channel.categories
-    @articles = (request.format.html?) ? @channel.articles.published.paginate(:page => params[:page]): @channel.articles.published
     @render_as = @channel.render_as || @channel
+    
+    if jewely_url.is_channel_page?
+      @categories = @channel.categories
+      @articles = (request.format.html?) ? @channel.articles.published.paginate(:page => params[:page]): @channel.articles.published
+    elsif jewely_url.is_category_page?
+      @category = jewely_url.category
+      @categories = [@category]
+      @articles = (request.format.html?) ? @category.articles.published.paginate(:page => params[:page]) : @category.articles.published
+    elsif jewely_url.is_article_page?
+      @article = jewely_url.article
+      return render(:action => :article_by_slug)
+    end
     
     respond_to do |wants|
       wants.html

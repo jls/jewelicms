@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     comment_params[:user_ip] = request.remote_ip
     comment_params[:user_agent] = request.user_agent
     comment_params[:referrer] = request.referer
-    comment_params[:permalink] = article_permalink(@article)
+    comment_params[:permalink] = request.host + @return_path
     
     @comment = Comment.new(params[:comment])
     @comment.check_for_spam!
