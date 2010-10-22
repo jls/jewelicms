@@ -183,9 +183,13 @@ h3 {
 
 #main {
 	float: left;
-	width: 510px;
+	width: 450px;
 	font-size: 1.2em;
 }
+
+	#main.read {
+		width: 510px;
+	}
 
 	#main ul li {
 		padding-top: 3px;
@@ -302,7 +306,35 @@ ol code {
 	color:rgba(225,225,225,1);	
 }
 
+#screenshots {
+	font-size: 1.2em;	
+	float: left;
+	width: 100%;
+}
 
+	#screenshots ul {
+		margin: 0;
+		padding: 0;
+		width: 100%;
+	}
+
+	#screenshots ul li {
+		padding: 0;
+		margin: 0;
+		margin-top: 12px;
+		margin-bottom: 48px;
+	}
+	
+		#screenshots ul li span {
+			margin-top: 12px;
+			font-weight: bold;
+			color: #620115;
+			display: inline-block;
+			width: 40%;
+			padding-left: 20px;
+			background: transparent url(/images/icon-uparrow-up.png) no-repeat top left;
+			
+		}
 
 
 #secondary {
@@ -313,6 +345,10 @@ ol code {
 
 	#secondary.home {
 		margin-top: 49px;
+	}
+	
+	#secondary.about {
+		margin-top: 250px;
 	}
 
 	ul#recent-posts {
@@ -392,6 +428,12 @@ ol code {
 		padding: 20px 30px;
 		font-size: 1.2em;
 	}
+
+/* general */
+.rounded {
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;	
+}
 
 /* self-clear floats */
 

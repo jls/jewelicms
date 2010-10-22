@@ -1,5 +1,5 @@
 <!-- Where is the rest of the layout? This chunk is included by /app/views/layouts/application.html.erb so edit that page to affect the overall structure -->
-<div id="main">
+<div id="main" class="read">
 	<% Article.get(:slug => params[:article_slug]).each do |article| %>
 		<div class="article">	
 			<h2><%= article.title %></h2>
