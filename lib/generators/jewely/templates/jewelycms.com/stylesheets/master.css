@@ -306,6 +306,11 @@ ol code {
 	color:rgba(225,225,225,1);	
 }
 
+.wallpaper-thumb {
+	width: 40%;
+	margin-right: 24px;
+}
+
 #screenshots {
 	font-size: 1.2em;	
 	float: left;
