@@ -89,10 +89,10 @@ class Article < ActiveRecord::Base
     }.merge!(options) # User options win.
     
     if opts[:from_url]
-      interpreter = UrlInterpreter.new opts[:from_url]
-      opts[:channel] = interpreter.channel.slug if interpreter.channel
-      opts[:category] = interpreter.category.slug if interpreter.category
-      opts[:slug] = interpreter.article.slug if interpreter.article
+      jewely_url = JewelyUrl.new opts[:from_url]
+      opts[:channel] = jewely_url.channel.slug if jewely_url.channel
+      opts[:category] = jewely_url.category.slug if jewely_url.category
+      opts[:slug] = jewely_url.article.slug if jewely_url.article
     end
     
     # Normalize a few of the options values to make sure
