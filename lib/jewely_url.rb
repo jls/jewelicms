@@ -14,9 +14,9 @@ class JewelyUrl
   # Initializes the url interpreter with 
   # the current url params.
   def initialize params, only_public = true
-    self.params = params
+    self.params = params.dup
     self.only_public = only_public
-    self.interpret self.params
+    self.interpret
   end
   
   # A few helper methods that can help
@@ -45,8 +45,8 @@ class JewelyUrl
   # => /template/article-slug
   # => /template/article-slug/some/other/parameters
   # => /template/category-name
-  def interpret aParams = nil
-    url_params = aParams || self.params
+  def interpret
+    url_params = self.params
     return unless url_params
     
     # The render template will always be stored
