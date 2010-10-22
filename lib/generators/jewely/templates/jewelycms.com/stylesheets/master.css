@@ -8,11 +8,8 @@ body {
 	font-size: 62.5%;
 	margin: 0;
 	padding: 0;
-	background: #ffbdb0;
+	background: #620115;
 	/* gradients without use of images */
-	background: -moz-linear-gradient(top, #FF9C89 0%, #FFBDB0 5%); /* firefox */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FF9C89), color-stop(5%,#FFBDB0)); /* webkit */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FF9C89', endColorstr='#FFBDB0',GradientType=0 ); /* ie */
 }
 
 p {
@@ -154,6 +151,13 @@ h3 {
 
 /* structure */
 
+#deco-wrap {
+	background: -moz-linear-gradient(top, #FF9C89 0%, #FFBDB0 5%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FF9C89), color-stop(5%,#FFBDB0)); /* webkit */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FF9C89', endColorstr='#FFBDB0',GradientType=0 ); /* ie */
+	
+}
+
 #wrap {
 	background: transparent url(/images/footer-crest-static.gif) repeat-x bottom left;
 	padding-bottom: 45px;
@@ -161,6 +165,7 @@ h3 {
 }
 
 	#wrap-inner {
+		
 		padding: 25px 0 0px 0;
 	}
 
