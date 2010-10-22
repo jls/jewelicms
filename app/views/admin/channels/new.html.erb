@@ -8,8 +8,12 @@
       <label for="channel_name">Name</label><br/>
       <%= f.text_field :name %>
       <% fields_for :copy do |copy_fields| -%>
-        from existing? 
-        <%= copy_fields.collection_select :channel_id, Channel.find(:all), :id, :name,  :prompt => "No" %>
+		<% if Channel.find(:all).empty? %>
+			<br/>A channel is a bucket for content for example <strong>blog</strong>, <strong>portfolio</strong>, or <strong>appointments</strong>.
+		<% else %>
+        	from existing? 
+        	<%= copy_fields.collection_select :channel_id, Channel.find(:all), :id, :name,  :prompt => "No" %>
+		<% end %>
       <% end -%>
     </p>
     <%= f.submit %>
