@@ -16,20 +16,22 @@
 		Cufon.replace('#settings-menu ul li a'); // Settings subnav
 	</script>
 
-	<% if !iphone_user_agent? # Show message for iPhone users -%>
+	<% if (request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile\/.+Safari)/]) -%>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/> 
+		<meta name="HandheldFriendly" content="True"/> 
+		<link rel="apple-touch-icon" href="/public/admin/apple-touch-icon.png"/>
+		<%= stylesheet_link_tag "admin/mobile/mreset", "admin/mobile/madmin" %>
+	<% else -%>
 	<!-- Blueprint CSS assets -->
 
-	<%= stylesheet_link_tag "admin/blueprint/src/reset", "admin/blueprint/src/grid", "admin/blueprint/src/typography", "admin/blueprint/src/forms", "admin/blueprint/screen", "admin/blueprint/screen", "admin/admin", :media => :screen %>
+		<%= stylesheet_link_tag "admin/blueprint/src/reset", "admin/blueprint/src/grid", "admin/blueprint/src/typography", "admin/blueprint/src/forms", "admin/blueprint/screen", "admin/blueprint/screen", "admin/admin", :media => :screen %>
 
-	<!--[if lt IE 8]>
-		<%= stylesheet_link_tag "admin/blueprint/ie", :media => :screen %>	
-	<![endif]-->	
-
-	
-	<!-- end Blueprint -->
-	<% else -%>
+		<!--[if lt IE 8]>
+			<%= stylesheet_link_tag "admin/blueprint/ie", :media => :screen %>	
+		<![endif]-->	
 
 	
+	<!-- end Blueprint -->	
 	<% end -%>
 
 	<%= stylesheet_link_tag "admin/blueprint/print", :media => :print %>	

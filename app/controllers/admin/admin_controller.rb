@@ -4,6 +4,8 @@ class Admin::AdminController < ApplicationController
   include AuthenticatedSystem
   before_filter :login_required
 
+  helper :admin # include all helpers, all the time
+
   def index    
     # lw is array for :conditions to target 'last week'
     lw = ["created_at between ? and ?", Time.now-7.days, Time.now+1.day]
