@@ -48,6 +48,7 @@
   		<h1>
   			<a href="/admin/">Jewely Admin</a>
   		</h1>
+		<hr />
  		<div id="nav">
     		<ul>
     		  	<li><%= link_to_remote 'New Article', :url => admin_channels_path, :method => :get, :html => { :class => "action-style", :id => 'new-post-link', :title => 'Create a new article under a channel'}%>
@@ -62,6 +63,7 @@
     		</ul>
     	</div><!-- navigation -->
   	</div><!-- header -->
+<hr/>
   		<div id="content" class="span-24 last">
   		  <%= yield %>
   		</div><!-- content -->
