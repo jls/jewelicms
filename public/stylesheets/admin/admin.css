@@ -347,6 +347,33 @@ h4 {
 
 
 
+/* Articles */
+.article-preview {
+	width: 100%;
+	position: relative;
+	display: inline-block;
+	padding: 10px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px #999;
+	-webkit-box-shadow: 0 1px 3px #999;	
+	margin: 10px 0;
+}
+
+.article-preview h3{
+	width: 100%;
+	position: relative;
+	background: rgba(25,25,25,.9);
+	color: rgba(170,170,170,1);
+	display: inline-block;
+	padding: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px #999;
+	-webkit-box-shadow: 0 1px 3px #999;	
+	margin: 5px -5px;
+}
+
 /* Classes */
 .not-implemented {
 	text-decoration: line-through;

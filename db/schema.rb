@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101023152603) do
+ActiveRecord::Schema.define(:version => 20101023172331) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -80,12 +80,20 @@ ActiveRecord::Schema.define(:version => 20101023152603) do
     t.integer  "data_field_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "default_filter_id"
   end
 
   create_table "data_values", :force => true do |t|
     t.integer  "article_id"
     t.integer  "data_field_id"
     t.text     "data_value",    :limit => 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "filter_id"
+  end
+
+  create_table "filters", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

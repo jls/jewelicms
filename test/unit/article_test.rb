@@ -14,13 +14,13 @@ class ArticleTest < ActiveSupport::TestCase
 
   test "ensure value_for return stored in cache" do
     @article = articles(:blog_hello_world_article)
-    assert_equal @article.value_for('Summary'), @article.values_cache['Summary']
+    assert_equal @article.value_for('Summary'), @article.values_cache['Summary_true']
   end
 
   test "values cache is used after first call" do
     @article = articles(:blog_hello_world_article)
     original_summary = @article.value_for('Summary')
-    @article.values_cache['Summary'] = "Changed!"
+    @article.values_cache['Summary_true'] = "Changed!"
     assert_equal @article.value_for('Summary'), 'Changed!'
   end
 

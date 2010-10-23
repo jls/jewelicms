@@ -6,12 +6,14 @@
       <th>Channel</th>
       <th>Label</th>
       <th>Type</th>
+      <th>Filter</th>
     </tr>
     <% @data_fields.each do |field| -%>
       <tr>
         <td><%= field.channel.name %></td>
         <td><%= field.label %></td>
         <td><%= field.data_field_type.name %></td>
+        <td><%= (field.default_filter) ? field.default_filter.name : 'None' %></td>
         <td><%= link_to 'Edit', edit_admin_data_field_path(field)%> |
             <%= link_to 'Destroy', admin_data_field_path(field), :method => :delete, :confirm => "Are you sure?\n\nThis will destroy all of the values for this field specified on any articles."%></td>
       </tr>
