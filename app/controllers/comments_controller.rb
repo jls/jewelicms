@@ -1,8 +1,17 @@
 class CommentsController < ApplicationController
   
+  before_filter :setup_article
+  
   def create
     @return_path = params[:comment].delete(:return_path)
     @article = Article.find(params[:comment][:article_id])
+    
+    # If the article doesn't have comments enabled
+    # then just redirect back to the article page.
+    unless @article.comments_enabled?
+      flash[:comment_notice] = 'Comments are not enabled for this article.'
+      return redirect_to @return_path
+    end
     
     comment_params = params[:comment]
     # Add all of the request values to the
