@@ -2,11 +2,18 @@
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
-    <title>Jewely Login</title>
+    	<title>Jewely</title>
+		<link href='/images/favicon.ico' rel='icon' type='image/vnd.microsoft.icon'/>
+		<link rel="apple-touch-icon" href="/public/admin/apple-touch-icon.png"/>
+		<%= stylesheet_link_tag "admin/blueprint/src/reset", "admin/blueprint/src/typography", "admin/blueprint/src/forms" %>
 	</head>
 	<body>
-	  <div id="flash_notice"><%= flash[:notice] %></div>
-	  <div id="flash_error"><%= flash[:error] %></div>
+		<% flash.each do |key, msg| %>
+		    <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_#{key}" %>
+		    <% content_tag :script, :type => "text/javascript" do -%>
+		        setTimeout("new Effect.Fade('notice_<%= key %>');", 15000);
+		    <% end %>
+		<% end %>
     <%= yield %>
 	</body>
 </html>

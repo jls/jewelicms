@@ -1,11 +1,80 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
 	<head>
-    <title>Your Site</title>
+		<title>Jewely CMS with Ruby on Rails</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		
+		<meta name="description" content="Jewely is an open source Ruby on Rails Content Management System that gets it right." /> 
+		<meta name="keywords" content="Rails CMS, content management system, content management system for designers, content management system for ad agencies, content, management, system, cms" /> 
+
+		<link rel="canonical" href="http://www.jewelycms.com/" /> 
+		<link href='/images/favicon.ico' rel='icon' type='image/vnd.microsoft.icon'/>
+
+		<link rel="pingback" href="" /> 
+		
+		<!-- A reset stylesheet which primes the page for our own styling. In /stylesheets/reset.css -->
+		<%= stylesheet_link_tag "reset", :media => :screen %>
+		<!-- Your custom styles are in /stylesheets/master.css -->
+		<%= stylesheet_link_tag "master", :media => :screen %>
+
+		<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-67996-13']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script>
 	</head>
-	<body>
-    <!-- The yield command looks at the URL e.g. http://yoursite.com/archive and then tries to find a layout to match it e.g. /app/view/templates/archive.html.erb -->
-      <%= yield %>
+
+	<body>		
+
+		<a href="http://github.com/jls/jewelycms"><img style="position: absolute; top: 0; left: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub" /></a>		
+		
+		
+		<div id="deco-wrap">
+		<!-- begin header, which holds all of the title, site navigation, and header art -->
+	  	<div id="header" class="group">
+			<div id="header-inner" class="group">
+		  		<h1>
+		  			<a href="/">Jewely</a>
+		  		</h1>
+
+				<!-- begin navigation -->
+				<ul id="nav">
+					<li id="blog"><a href="/archive">Archive</a></li>
+					<li id="about"><a href="/about">About</a></li>
+					<li id="download"><a href="http://github.com/jls/jewelycms/archives/master">Download</a></li>
+					<li id="documentation"><a href="https://github.com/jls/jewelycms/wiki">How To Use</a></li>
+				</ul>
+				<!-- end navigation -->
+
+				<!-- begin Jewely's face -->
+				<div id="art"></div>
+				<!-- end Jewely's face -->
+
+				<hr/>
+			</div>
+	  	</div>
+		<!-- end header -->
+	
+		<!-- begin the wrap, which encloses the heart of our content -->
+		<div id="wrap">
+			<div id="wrap-inner"> 
+				<div id="content" class="group">
+				  <!-- The yield command looks at the URL e.g. http://yoursite.com/archive and then tries to find a layout to match it e.g. /app/view/templates/archive.html.erb -->
+		  		  <%= yield %>
+		  		</div>
+		  	</div>
+		  </div>
+		</div><!-- end deco-wrap -->
+		
+		<!-- end wrap -->
+	
+		<!-- begin footer, where we put info that is tangentially important -->
+		<div id="footer">
+			<div id="footer-inner">
+					<span class="slogan">Jewely loves code &amp; groks design.</span>
+					<span class="credits">An open-source Rails CMS by <a href="http://jamesleesmith.com">James Smith</a> &amp; <a href="http://storypixel.com">Sam Wilson</a> but &copy; YOU <%= DateTime.now.year %></span>
+			</div>
+		</div>
+		<!-- end footer -->
 	</body>
+	
 </html>

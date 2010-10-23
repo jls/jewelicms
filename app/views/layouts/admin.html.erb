@@ -4,43 +4,51 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link href='/images/favicon.ico' rel='icon' type='image/vnd.microsoft.icon'/>
 	<%= javascript_include_tag :defaults %>
 	<%= javascript_include_tag "admin/cufon", "admin/fonts/DinProMedium_500.font.js", "admin/application", "admin/hints" %>
+
+	<!-- font stuff -->
 	<script type="text/javascript">
-		Cufon.replace('h1'); // Works without a selector engine
+		Cufon.replace('h1');
 		Cufon.replace('h2');
 		Cufon.replace('h3');		
-		Cufon.replace('#nav li'); // Works without a selector engine
-		Cufon.replace('#settings-menu ul li a'); // Works without a selector engine
-</script>	
-
-	<!-- Blueprint CSS assets -->
-
-	<%= stylesheet_link_tag "admin/blueprint/src/reset", "admin/blueprint/src/grid", "admin/blueprint/src/typography", "admin/blueprint/src/forms", "admin/blueprint/screen", "admin/blueprint/screen", "admin/admin", :media => :screen %>
+		Cufon.replace('#nav li'); // Main menu items
+		Cufon.replace('#settings-menu ul li a'); // Settings subnav
+	</script>
 	
-	<!--[if lt IE 8]>
-		<%= stylesheet_link_tag "admin/blueprint/ie", :media => :screen %>	
-	<![endif]-->	
-
-	<%= stylesheet_link_tag "admin/blueprint/print", :media => :print %>
-		
-	<!-- end Blueprint -->
-
+	<% if (request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile\/.+Safari)/]) -%>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/> 
+		<link rel="apple-touch-icon" href="/public/admin/apple-touch-icon.png"/>
+		<%= stylesheet_link_tag "admin/blueprint/src/reset", "admin/blueprint/src/typography", "admin/blueprint/src/forms" %>
+		<%= stylesheet_link_tag "admin/mobile/mreset", "admin/mobile/madmin" %>
+	<% else -%>
+	<!-- Blueprint CSS assets -->
+		<%= stylesheet_link_tag "admin/blueprint/src/reset", "admin/blueprint/src/grid", "admin/blueprint/src/typography", "admin/blueprint/src/forms", "admin/blueprint/screen", "admin/admin", :media => :screen %>
+		<!--[if lt IE 8]>
+			<%= stylesheet_link_tag "admin/blueprint/ie", :media => :screen %>	
+		<![endif]-->	
+	<!-- end Blueprint -->	
+	<% end -%>
+	<%= stylesheet_link_tag "admin/blueprint/print", :media => :print %>	
   <% if header = yield(:head) -%>
     <%= header %>
   <% end -%>
 	<title>Jewely Administration</title>
 </head>
 
-<body class="<%= params[:controller].split("/").last %> <%= params[:action] %>">
+<body class="<%= params[:controller].split("/").last -%> <%= params[:action] -%>">
   <div class="container">
  	<div id="header" class="span-24 last">
   		<h1>
   			<a href="/admin/">Jewely Admin</a>
   		</h1>
+		<hr />
  		<div id="nav">
     		<ul>
-    		  <li><%= link_to_remote 'New Article', :url => admin_channels_path, :method => :get, :html => { :class => "action-style", :id => 'new-post-link', :title => 'Create a new article under a channel'}%></li>
+    		  	<li><%= link_to_remote 'New Article', :url => admin_channels_path, :method => :get, :html => { :class => "action-style", :id => 'new-post-link', :title => 'Create a new article under a channel'}%>
+		    	<div id="new-post-channels-list" style="display:none"></div>
+				</li>
     			<li><%= link_to 'Articles', admin_articles_path, :class=>"action-style", :id => "articles-nav-item", :title => 'View and edit any articles' %><!-- (<%= link_to '?', '#', :class=>"help-item not-implemented"%>)--></li>
     			<li><%= link_to 'Comments', admin_comments_path, :class=>"action-style", :id => "comments-nav-item", :title => 'View and edit any comments' %><!-- (<%= link_to '?', '#', :class=>"help-item not-implemented"%>)--></li>
     			<li><%= link_to 'Channels', admin_channels_path, :class=>"action-style", :id => "channels-nav-item", :title => 'Edit or add any channels so that you can publish articles to them' %><!-- (<%= link_to '?', '#', :class=>"help-item not-implemented"%>)--></li>
@@ -49,14 +57,15 @@
     			<li><%= link_to 'Settings', admin_users_path, :class => "action-style secondary", :title => 'Edit settings pertaining to your site like users, vital information, and some server settings' %></li>
     		</ul>
     	</div><!-- navigation -->
-    	<div id="new-post-channels-list" style="display:none"></div>
   	</div><!-- header -->
+<hr/>
   		<div id="content" class="span-24 last">
   		  <%= yield %>
   		</div><!-- content -->
      	<% if above_footer = yield(:above_footer) %>
     	  <%= above_footer %>
     	<% end %>
+		<hr/>
   		<div id="footer" class="span-24">
   			<span class="admin-info">Hi, <%= current_user.name -%> [<%= link_to 'Logout', logout_path %>]</span> <span class="separator">|</span> <span class="about">Copyright &copy; <a href="http://www.jewelycms.com">Jewely CMS</a>, <%= DateTime.now.year %></span> <span class="separator">|</span> <h3>Jewely CMS</h3>
   		</div><!-- footer -->
