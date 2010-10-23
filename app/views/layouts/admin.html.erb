@@ -19,7 +19,7 @@
 	
 	<% if (request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile\/.+Safari)/]) -%>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/> 
-		<link rel="apple-touch-icon" href="/public/admin/apple-touch-icon.png"/>
+		<link rel="apple-touch-icon" href="/images/admin/apple-touch-icon.png"/>
 		<%= stylesheet_link_tag "admin/blueprint/src/reset", "admin/blueprint/src/typography", "admin/blueprint/src/forms" %>
 		<%= stylesheet_link_tag "admin/mobile/mreset", "admin/mobile/madmin" %>
 	<% else -%>
