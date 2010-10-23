@@ -13,7 +13,9 @@
   <p>
     <label for="data_field_data_field_type_id">Type</label><br/>
     <%= f.collection_select :data_field_type_id, DataFieldType.find(:all), :id, :name %>
-
   </p>
+  <p>
+    <label for="data_field_default_filter_id">Filter</label><br/>
+    <%= f.collection_select :default_filter_id, Filter.find(:all), :id, :name, :include_blank => 'None' %>
   <%= f.submit %>
 <% end %>

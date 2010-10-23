@@ -15,13 +15,21 @@ class Article < ActiveRecord::Base
   belongs_to :author, :class_name => "User", :foreign_key => "author_id"
   has_many :comments
   has_many :data_values, :dependent => :destroy do
-    def value_for label
+    def value_for label, filtered = true
       # Get the data field matching the label
       data_field = proxy_owner.channel.data_fields.find_by_label(label)
       return unless data_field
+      
       value = find_by_data_field_id(data_field.id)
       return unless value
-      value.data_value      
+      
+      (filtered) ? value.filtered_value : value.data_value
+    end
+    
+    def current_filter_id_for data_field
+      value = find_by_data_field_id(data_field.id)
+      return value.filter.id if value && value.filter
+      return data_field.default_filter.id if data_field.default_filter
     end
   end
   
@@ -38,9 +46,9 @@ class Article < ActiveRecord::Base
   # A convenience method to find the 
   # data value record for the data field
   # with the given label.
-  def value_for label
+  def value_for label, filtered = true
     self.values_cache ||= {}
-    self.values_cache[label] ||= self.data_values.value_for label
+    self.values_cache["#{label}_#{filtered}"] ||= self.data_values.value_for label, filtered
   end
   
   # Convenience method that combines most of the common

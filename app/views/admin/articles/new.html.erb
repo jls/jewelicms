@@ -23,7 +23,14 @@
           <% if data_field.data_field_type_id == 1 -%>
             <%= data_values.text_field data_field.id, :value => @article.value_for(data_field.label) -%>
           <% else -%>
-            <%= data_values.text_area data_field.id, :size => "60x10", :class => 'rich-edit-text', :value => @article.value_for(data_field.label) %>
+            Filter: 
+            <%= collection_select "filters", 
+                                  data_field.id, 
+                                  Filter.find(:all), 
+                                  :id, :name, 
+                                  :include_blank => 'None', 
+                                  :selected => @article.data_values.current_filter_id_for(data_field) -%><br/>
+            <%= data_values.text_area data_field.id, :size => "60x10", :class => 'rich-edit-text', :value => @article.value_for(data_field.label, false) %>
           <% end -%>
           <br/>
         <% end -%>
