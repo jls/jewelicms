@@ -82,6 +82,45 @@ ul#common-tasks .time {
 		-moz-border-radius-topright: 0;
 		-webkit-border-top-right-radius: 0;	
 	}
+	
+		/* New Post - Channel List */
+	#nav div#new-post-channels-list{
+			padding-top: 10px;
+			position:absolute;
+			top:33px;
+			z-index:100;
+			display: inline-block;
+			background: transparent url(/images/admin/menu-connector-1.png) no-repeat top 10px;	
+		}
+
+			#nav div#new-post-channels-list ul{
+				min-width: 80px;
+				width: 120px;
+				padding: 10px 10px 5px 10px;
+				-moz-border-radius: 5px;
+				-webkit-border-radius: 5px;	
+				background: rgba(25,25,25,.9);
+				-moz-box-shadow: 0 1px 3px #999;
+				-webkit-box-shadow: 0 1px 3px #999;	
+				list-style: none;
+				border: 1px solid #000;
+			}
+
+			#nav div#new-post-channels-list ul li{
+				color: #c0c0c0;
+				width: 100%;
+			
+			}
+
+			#nav div#new-post-channels-list a{
+				color: #fff;
+				text-decoration:none;
+			}
+
+			#nav div#new-post-channels-list a:hover{
+				text-decoration:underline;
+			}
+
 
 	body #nav li a.action-style {
 		color: #fff;
@@ -303,39 +342,6 @@ h4 {
 
 
 
-/* New Post - Channel List */
-#new-post-channels-list{
-	padding-top: 10px;
-	position:absolute;
-	top:33px;
-	z-index:100;
-	display: inline-block;
-	background: transparent url(/images/admin/menu-connector-1.png) no-repeat top 10px;	
-}
-
-	#new-post-channels-list ul{
-		min-width: 80px;
-		padding: 10px 10px 5px 10px;
-		-moz-border-radius: 5px;
-		-webkit-border-radius: 5px;	
-		background: rgba(25,25,25,.9);
-		-moz-box-shadow: 0 1px 3px #999;
-		-webkit-box-shadow: 0 1px 3px #999;	
-		list-style: none;
-	}
-
-	#new-post-channels-list ul li{
-		color: #c0c0c0;
-	}
-
-	#new-post-channels-list a{
-		color: #fff;
-		text-decoration:none;
-	}
-
-	#new-post-channels-list a:hover{
-		text-decoration:underline;
-	}
 
 /* Classes */
 .not-implemented {
