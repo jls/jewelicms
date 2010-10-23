@@ -1,0 +1,89 @@
+html {
+	background: #ffffff; /* old browsers */
+	background: -moz-linear-gradient(top, #f00 0%, #FFFFFF 57%, #DBDBDB 100%); /* firefox */
+
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(57%,#FFFFFF), color-stop(100%,#DBDBDB)); /* webkit */
+
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#DBDBDB',GradientType=0 ); /* ie */
+	height: 100%;	
+}
+
+.container {
+	margin: 5px 5px 0 5px;
+}
+
+#nav ul li {
+	display: inline-block;
+	background: rgba(0,0,0,.1);
+}
+
+#nav ul li a.secondary {
+	opacity: .75;
+}
+
+/* Hints */
+
+.hint {
+	width: 100%;
+	position: relative;
+	background: rgba(25,25,25,.9);
+	color: rgba(170,170,170,1);
+	display: inline-block;
+	padding: 10px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px #999;
+	-webkit-box-shadow: 0 1px 3px #999;	
+	margin: 10px 0;
+}
+
+	#hint-toggle {
+		display: none;
+	}
+
+	.hint .hint-body-wrapper {
+		margin-right: 30px;
+		margin-left: 78px;
+	}
+
+	.hint .hint-icon {
+		width:0px;
+		height:0px;
+		float: left;
+		background: transparent url(/images/admin/hint-icon.png) no-repeat 7px 3px;
+	}
+
+	.hint h3 {
+		color: #CCDCF9;
+	
+	}
+
+	.hint strong {
+		color: rgba(255,255,255,1);
+	}
+
+	.hint .close-btn {
+		background: rgba(25,25,25,.9);
+		position: absolute;
+		top: -16px;
+		right: -16px;	
+	    width: 32px; 
+		height: 32px; 
+	    -webkit-border-radius: 16px; 
+		-moz-border-radius: 16px;
+		border: 2px solid #fff;
+		-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+		-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);	
+	  }
+
+	.hint .close-btn:hover {
+		background: #06c;		
+	}
+
+	.hint .close-btn a {
+		text-decoration: none;
+		color: #fff;	
+		display: block;	
+		text-align: center; 
+		margin-top: -2px;
+	}
