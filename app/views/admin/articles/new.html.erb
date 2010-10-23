@@ -52,6 +52,7 @@
   			<fieldset>
   				<legend>Status</legend>
   				<p><label for="article_author_id">Author:</label> <%= f.collection_select :author_id, User.find(:all), :id, :name %></p>
+  				<p><%= f.check_box :comments_enabled %><label for="article_comments_enabled">Comments Enabled?</label></p>
   		    <%= f.check_box :is_published %><label for="article_is_published">Published</label>
   			</fieldset>
   	</fieldset>  
