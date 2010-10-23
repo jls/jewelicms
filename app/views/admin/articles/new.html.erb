@@ -1,8 +1,19 @@
 <h2>New Article for <%= @article.channel.name -%> Channel</h2>
+<% if params[:preview] -%>
+  <div id="preview-container" class="article-preview">
+    <h3>Preview</h3>
+    <% @article.data_values.each do |data_value| -%>
+      <p><%= data_value.filtered_value %></p>
+    <% end -%>
+    <a href="#" onclick="document.getElementById('preview-container').style.display='none';return false;">Close Preview</a>
+  </div>
+<% end -%>
+
 <%= error_messages_for :article %>
 
 <% form_for @article, :url => (@article.new_record?) ? admin_articles_path : admin_article_path(@article) do |f| %>
   <div id="article-fields" class="span-12 append-12 last">
+    <%= check_box_tag 'preview_option', 1, false, :style => 'display:none' %>
     <%= f.hidden_field :channel_id %>
     <p>
       <label for="article_title">Title</label><br/>
@@ -64,8 +75,8 @@
   			</fieldset>
   	</fieldset>  
   </div>
-  <div id="preview-container"></div>
+  
   <%= f.submit 'Save as Draft', :onclick => "document.getElementById('article_is_published').checked=false; return true;" -%>
   <%= f.submit 'Save and Publish', :onclick => "document.getElementById('article_is_published').checked=true; return true;"%>
-  <%= link_to_function('Preview', "jewely.admin.previewArticle()")%>
+  <%= f.submit 'Save and Preview', :onclick => "document.getElementById('preview_option').checked=true;return true;" %>
 <% end -%>
