@@ -1,4 +1,4 @@
-<h2>New Article for <%= @article.channel.name -%> Channel</h2>
+<h2><%= (@article.new_record?) ? "New" : 'Editing' %> Article for <%= @article.channel.name -%> Channel</h2>
 <% if params[:preview] -%>
   <div id="preview-container" class="article-preview">
     <h3>Preview</h3>

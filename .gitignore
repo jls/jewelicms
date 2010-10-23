@@ -1,5 +1,6 @@
 .autotest
 .DS_Store
+app/views/layouts/application.html.erb
 config/database.yml
 config/initializers/rakismet.rb
 db/test.sqlite3
