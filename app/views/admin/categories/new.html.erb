@@ -2,7 +2,7 @@
 <%= error_messages_for :category %>
 
 <% form_for @category, :url => (@category.new_record?) ? admin_categories_path : admin_category_path(@category) do |f| %>
-  <%= f.select :channel_id, options_from_collection_for_select(Channel.find(:all), "id", "name") %>
+  <%= f.collection_select :channel_id, Channel.find(:all), "id", "name" %>
   <%= f.text_field :name %>
   <%= f.submit %>
 <% end %>

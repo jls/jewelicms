@@ -21,10 +21,9 @@
           <label><%= data_field.label %></label><br/>
       
           <% if data_field.data_field_type_id == 1 -%>
-            <%= data_values.text_field data_field.id, :value => (@article.data_values.find_by_data_field_id(data_field.id).data_value rescue nil)-%>
+            <%= data_values.text_field data_field.id, :value => @article.value_for(data_field.label) -%>
           <% else -%>
-        
-            <%= data_values.text_area data_field.id, :size => "60x10", :class => 'rich-edit-text', :value => (@article.data_values.find_by_data_field_id(data_field.id).data_value rescue nil) %>
+            <%= data_values.text_area data_field.id, :size => "60x10", :class => 'rich-edit-text', :value => @article.value_for(data_field.label) %>
           <% end -%>
           <br/>
         <% end -%>
@@ -40,7 +39,8 @@
   				    <ul>
   				      <% @article.channel.categories.each do |category| -%>
   			  	      <li>
-  			  	        <%= check_box_tag "article[category_ids][]", category.id, @article.categories.include?(category) -%> <%= category.name -%>
+  			  	        <%= check_box_tag "article[category_ids][]", category.id, @article.categories.include?(category), :id => "article_category_#{category.id}" -%>
+  			  	        <%= label_tag "article_category_#{category.id}", category.name %>
   			  	      </li>
   				      <% end -%>
   			      	</ul>
@@ -51,6 +51,7 @@
   			</fieldset>
   			<fieldset>
   				<legend>Status</legend>
+  				<p><label for="article_author_id">Author:</label> <%= f.collection_select :author_id, User.find(:all), :id, :name %></p>
   		    <%= f.check_box :is_published %><label for="article_is_published">Published</label>
   			</fieldset>
   	</fieldset>  
