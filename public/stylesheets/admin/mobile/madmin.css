@@ -68,8 +68,10 @@ a.action-style {
 	padding: 0 0 0 10px;
 }
 
-th {
+th, label {
 	opacity: .5;
+	text-transform: capitalize;
+	font-weight: bold;
 }
 
 #nav ul li a {

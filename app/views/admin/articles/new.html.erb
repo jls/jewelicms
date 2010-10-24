@@ -34,7 +34,7 @@
           <% if data_field.data_field_type_id == 1 -%>
             <%= data_values.text_field data_field.id, :value => @article.value_for(data_field.label) -%>
           <% else -%>
-            Filter: 
+            Format: 
             <%= collection_select "filters", 
                                   data_field.id, 
                                   Filter.find(:all), 
