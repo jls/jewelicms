@@ -23,8 +23,31 @@ label {
 	text-transform: capitalize;
 }
 
+#article-options>label {
+	float: left;
+	vertical-align: 5px;
+}
+
+.formatting-options {
+	text-align: right;
+	float: right;
+	display: inline-block;
+}
+
 #article-options fieldset {
 	background: rgba(180,180,180,.3);	
+}
+
+#article-options {
+	margin-top: 24px;
+}
+
+.data-value-title-area {
+	margin-top: 24px;
+}
+
+.data-value-title-area select {
+	margin-top: 0;
 }
 
 #article-fields textarea, #article-fields input{

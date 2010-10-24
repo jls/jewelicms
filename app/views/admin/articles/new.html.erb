@@ -15,38 +15,40 @@
   <div id="article-fields" class="span-12 append-12 last">
     <%= check_box_tag 'preview_option', 1, false, :style => 'display:none' %>
     <%= f.hidden_field :channel_id %>
-    <p>
+	<p class="group">
       <label for="article_title">Title</label><br/>
       <%= f.text_field :title, :size => "50", :onkeyup => "jewely.admin.updateSlug();" %>
-    </p>
-    <p>
+	</p>
+	<p class="group">
       <label for="article_slug">Title in the url</label><br/>
       <%= f.text_field :slug, :size => "50" %><br/>
       <span class="note">Also known as the "slug". Leave blank to have it generated for you</span>
-    </p>
-    <p>
+	</p>
+	
       <% fields_for :data_values do |data_values| -%>
-    
-        <% @article.channel.data_fields.each do |data_field| -%>
-    
-          <label><%= data_field.label %></label><br/>
-      
+		<% @article.channel.data_fields.each do |data_field| -%>
+		  <div class="data-value-title-area">
+          <label><%= data_field.label %></label>
           <% if data_field.data_field_type_id == 1 -%>
-            <%= data_values.text_field data_field.id, :value => @article.value_for(data_field.label) -%>
+	        <%= data_values.text_field data_field.id, :value => @article.value_for(data_field.label) -%>
+			</div> <!-- end data-value-title-area -->
           <% else -%>
-            Format: 
-            <%= collection_select "filters", 
-                                  data_field.id, 
-                                  Filter.find(:all), 
-                                  :id, :name, 
-                                  :include_blank => 'None', 
-                                  :selected => @article.data_values.current_filter_id_for(data_field) -%><br/>
+	            <div class="formatting-options">Format: 
+		            <%= collection_select "filters", 
+		                                  data_field.id, 
+		                                  Filter.find(:all), 
+		                                  :id, :name, 
+		                                  :include_blank => 'None', 
+		                                  :selected => @article.data_values.current_filter_id_for(data_field) -%>
+				</div>
+		    </div> <!-- end data-value-title-area -->
+			<div class="text-field">
             <%= data_values.text_area data_field.id, :size => "60x10", :class => 'rich-edit-text', :value => @article.value_for(data_field.label, false) %>
+			</div>
           <% end -%>
-          <br/>
         <% end -%>
       <% end -%>
-    </p>
+
   </div>
   <div id="article-options" class="span-12 append-12 last">
   	<fieldset>
@@ -67,12 +69,29 @@
   				<% end %>
   				<%= link_to 'New Category', new_admin_category_path(:channel_id => @article.channel) %>
   			</fieldset>
-  			<fieldset>
-  				<legend>Status</legend>
-  				<p><label for="article_author_id">Author:</label> <%= f.collection_select :author_id, User.find(:all), :id, :name %></p>
-  				<p><%= f.check_box :comments_enabled %><label for="article_comments_enabled">Comments Enabled?</label></p>
-  		    <%= f.check_box :is_published %><label for="article_is_published">Published</label>
-  			</fieldset>
+
+			<fieldset>
+				<legend>Comments</legend>
+				<div class="group">
+				<!-- comments enabled? -->
+  				<%= f.check_box :comments_enabled %><label for="article_comments_enabled">Comments Enabled?</label>				
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<legend>Authorship</legend>
+				<div class="group">
+  				<!-- author -->
+				<label for="article_author_id">Author:</label> 
+				<%= f.collection_select :author_id, User.find(:all), :id, :name %>				
+				</div>
+				
+				<div class="group">
+				<!-- is published? -->
+  		    	<%= f.check_box :is_published %><label for="article_is_published">Published</label>
+				</div>
+			</fieldset>
+
   	</fieldset>  
   </div>
   
