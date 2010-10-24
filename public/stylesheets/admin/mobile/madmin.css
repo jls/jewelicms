@@ -8,16 +8,78 @@ html {
 	height: 100%;	
 }
 
+body {
+	background: transparent;
+	height: 100%;
+}
+
+hr {
+	border: 0;
+	border-bottom: 1px dashed rgba(0,0,0,.5) ;
+}
+
+hr:first-of-type {
+	line-height: 4px;
+	margin-bottom:0;
+}
+
 .container {
 	margin: 5px 5px 0 5px;
 }
 
-#nav ul li {
-	display: inline-block;
-	background: rgba(0,0,0,.1);
+a.action-style {
+	background: #E5ECF9;
+	padding: 0 3px 0 3px;
 }
 
+#content {
+	position: relative;
+}
+
+#settings-menu {
+	border: 1px dashed rgba(0,0,0,.5);
+	border-top: 0;
+	border-left: 0;
+	width: 100%;
+	height: 38px;
+	padding: 5px;
+	top: 0;
+	position: absolute;
+}
+
+#settings-primary {
+	padding-top: 48px;
+}
+
+#nav ul li, #settings-menu li {
+	display: inline-block;
+	background: #E5ECF9;
+	margin: 8px 5px 0 0;
+	padding-left: 3px;
+	padding-right: 3px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;	
+	float: left;
+}
+
+#nav div#new-post-channels-list ul li{
+	width: 100%;
+	background: transparent;
+	padding: 0 0 0 10px;
+}
+
+th {
+	opacity: .5;
+}
+
+#nav ul li a {
+	padding: 0;
+	margin: 0;
+}
+
+
 #nav ul li a.secondary {
+	color: #333;
 	opacity: .75;
 }
 
