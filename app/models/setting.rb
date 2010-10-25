@@ -1,6 +1,6 @@
 class Setting < ActiveRecord::Base
   
-  DEFAULTS = {:site_name => 'Jewely', :show_help => true}
+  DEFAULTS = {:site_name => 'Jeweli', :show_help => true}
   
   def self.default
     # Check and see if settings exist

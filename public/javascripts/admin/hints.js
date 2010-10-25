@@ -1,6 +1,6 @@
 /* This file implements the hints hiding functionality. this can/should be rewritten as jquery or something else. and it should be linked to real preferences in the database eventually. */
-// The variable we'll use to check if jewely hints cookie is set
-var cookieName = "show_jewely_hints";
+// The variable we'll use to check if jeweli hints cookie is set
+var cookieName = "show_jeweli_hints";
 
 document.observe('dom:loaded', pageInit);
 

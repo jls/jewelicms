@@ -1,6 +1,6 @@
 # Lookup the data field types
-rich_field_type = DataFieldType.find_by_name('Rich Text')
-text_field_type = DataFieldType.find_by_name('Text')
+rich_field_type = DataFieldType.find_by_name('Textarea')
+text_field_type = DataFieldType.find_by_name('Text Field')
 
 # Lookup the admin user
 admin_user = User.find_by_login('admin')
@@ -40,25 +40,25 @@ article.categories << tutorial_category unless article.categories.include? tutor
 
 # Create the data field values for the article
 unless summary_value = DataValue.find_by_article_id_and_data_field_id(article.id, summary_field.id)
-  summary_value = article.data_values.create(:data_field_id => summary_field.id, :data_value => "The Jewely project leverages <a href=\"http://rubyonrails.org\">Ruby on Rails</a> to be powerful but simple. Here\'s how to install and run Jewely quickly.")
+  summary_value = article.data_values.create(:data_field_id => summary_field.id, :data_value => "The Jeweli project leverages <a href=\"http://rubyonrails.org\">Ruby on Rails</a> to be powerful but simple. Here\'s how to install and run Jeweli quickly.")
 end
 
 unless body_value = DataValue.find_by_article_id_and_data_field_id(article.id, body_field.id)
   body_value = article.data_values.create(:data_field_id => body_field.id, :data_value => <<eos)
     <h3>Part 1: Prerequisites</h3>
-    <p>To run Jewely locally for making your blog successfully you need:</p>
+    <p>To run Jeweli locally for making your blog successfully you need:</p>
     <ul>
     <li><a href="http://rubyonrails.org">Ruby on Rails</a> (version 2.3.8... the version is <strong>important</strong>)</li>
     <li><a href="http://www.google.com/search?q=installing+git">Git</a></li>
     </ul>
-    <p>And to run your Jewely blog online, you will need some kind of Rails-based host or server. We will assume you don't have this and recommend free <a href="http://heroku.com">Heroku</a>.
+    <p>And to run your Jeweli blog online, you will need some kind of Rails-based host or server. We will assume you don't have this and recommend free <a href="http://heroku.com">Heroku</a>.
 
     <h3>Part 2: Setup</h3>
     <p>Open up your command line and do the following commands. You may or may not want to browse to a fresh directory first.</p>
 
     <ol>
-    <li><code>git clone git@github.com:/jls/jewely.git</code></li>
-    <li><code>cd jewely</code></li>
+    <li><code>git clone git@github.com:/jls/jeweli.git</code></li>
+    <li><code>cd jeweli</code></li>
     <li><code>cp config/database.yml.template config/database.yml</code></li>
     <li><code>rake db:setup</code></li>
     <li><code>sudo rake gems:install</code></li>
@@ -68,13 +68,13 @@ unless body_value = DataValue.find_by_article_id_and_data_field_id(article.id, b
     <p>You are technically ready to go now, but for this tutorial we want to install an example site. So do this:</p>
 
     <ol>
-    <li><code>script/generate jewely jewelycms.com</code></li>
+    <li><code>script/generate jeweli jewelicms.com</code></li>
     </ol>
 
     <p>If this prompts you with a question, respond with the prompt by typing "Y". Then run to fill your site with data:</p>
 
     <ol>
-    <li><code>rake jewely:load site=jewelycms.com</code></li>
+    <li><code>rake jeweli:load site=jewelicms.com</code></li>
     </ol>
 
     <p>That's it for setup! Now run your server:</p>
@@ -85,37 +85,37 @@ unless body_value = DataValue.find_by_article_id_and_data_field_id(article.id, b
     <p>Verify this worked by browsing to <a href="http://localhost:3000">http://localhost:3000</a>. To stop the server, do a <strong>Ctrl+C</strong> in the terminal window.</p>
 
     <h3>Part 3: Administrator Panel</h3>
-    <p>Browse to <a href="http://localhost:3000/admin">http://localhost.com/admin:3000</a>. Log in with username <strong>admin</strong> and password <strong>jewely</strong>. You can and should change these defaults.</p>
+    <p>Browse to <a href="http://localhost:3000/admin">http://localhost.com/admin:3000</a>. Log in with username <strong>admin</strong> and password <strong>jeweli</strong>. You can and should change these defaults.</p>
 
-    <p>The seed command you ran gave you all of the content (articles, channels, categories, etc) for the site you're reading right now: jewelycms.com.</p>
+    <p>The seed command you ran gave you all of the content (articles, channels, categories, etc) for the site you're reading right now: jewelicms.com.</p>
 
-    <p>Browse around the interface and notice the hints which you can turn off as indicated. Below is the terminology Jewely uses. </p>
+    <p>Browse around the interface and notice the hints which you can turn off as indicated. Below is the terminology Jeweli uses. </p>
 
     <p>An <strong>article</strong> is a post you make e.g. "5 cool card tricks". A <strong>channel</strong> is a pre-planned place you'll make articles e.g. "blog", "portfolio" and so on. A <strong>data field</strong> is a field you see when making <strong>article</strong> like "body". A <strong>category</strong> is an optional tag you use to help categgorize your articles "Funny" etc.</p>
 
     <h3>Part Final: Editing the Look</h3>
-    <p>This is the fun part. Open the jewely directory in your favorite text editor (mine is <a href="http://textmate.com">TextMate</a>).</p>
+    <p>This is the fun part. Open the jeweli directory in your favorite text editor (mine is <a href="http://textmate.com">TextMate</a>).</p>
 
     <h4>Stylesheets</h4>
-    <p>The stylesheets which are referenced in the jewelycms.com's starter template view files is</p>
+    <p>The stylesheets which are referenced in the jewelicms.com's starter template view files is</p>
     <ul>
-    <li><strong>/jewely/public/stylesheets/reset.css</strong>: contains reset styles. You can safely reuse this for most projects or find your own reset</li>
-    <li><strong>/jewely/public/stylesheets/master.css</strong>: contains the core styles. If you clear this file... you can see the html without makeup.</li>
+    <li><strong>/jeweli/public/stylesheets/reset.css</strong>: contains reset styles. You can safely reuse this for most projects or find your own reset</li>
+    <li><strong>/jeweli/public/stylesheets/master.css</strong>: contains the core styles. If you clear this file... you can see the html without makeup.</li>
     </ul>
 
-    <p>The Rails views (analogous to html files... which determine your structural layout) are located in <strong>/jewely/app/views/templates/</strong>. This <strong>templates</strong> directory is where you can write your own pages. For example if you want to have a page http://localhost:3000/monkey, you would create a new page <strong>monkey.html.erb</strong> in this directory.</p>
+    <p>The Rails views (analogous to html files... which determine your structural layout) are located in <strong>/jeweli/app/views/templates/</strong>. This <strong>templates</strong> directory is where you can write your own pages. For example if you want to have a page http://localhost:3000/monkey, you would create a new page <strong>monkey.html.erb</strong> in this directory.</p>
     <ul>
-    <li><strong>/jewely/app/views/templates/about.html.erb</strong>: the page that contains some information about JewelyCMS. Replace this with your own text</li>
-    <li><strong>/jewely/app/views/templates/archive.html.erb</strong>: lists out all articles. Look around the code to see the loop that is used.</li>
-    <li><strong>/jewely/app/views/templates/index.html.erb</strong>: the home page. Check out the code for comments.</li>
-    <li><strong>/jewely/app/views/templates/read.html.erb</strong>: the page that displays a single blog article. Expects a url slug after it to work e.g. http://localhost:3000/read/how-to-make-turtles-cry</li>
+    <li><strong>/jeweli/app/views/templates/about.html.erb</strong>: the page that contains some information about JeweliCMS. Replace this with your own text</li>
+    <li><strong>/jeweli/app/views/templates/archive.html.erb</strong>: lists out all articles. Look around the code to see the loop that is used.</li>
+    <li><strong>/jeweli/app/views/templates/index.html.erb</strong>: the home page. Check out the code for comments.</li>
+    <li><strong>/jeweli/app/views/templates/read.html.erb</strong>: the page that displays a single blog article. Expects a url slug after it to work e.g. http://localhost:3000/read/how-to-make-turtles-cry</li>
     </ul>
 
     <h3>Closing thoughts</h3>
-    <p>Keep changing things in the starter site, then refreshing to see the changes. Read the comments that we've written in order to make you understand what the Jewely functions are doing.</p>
+    <p>Keep changing things in the starter site, then refreshing to see the changes. Read the comments that we've written in order to make you understand what the Jeweli functions are doing.</p>
 
-    <p>As you can see, Jewely's aim is to step out of your design's way and let you leverage the inherit strengths of Rails. If you have no Rails experience, then the jewely starter commands are a good way to not only accomplish your designs quickly but also <strong>learn some Rails</strong>. Before you know it, you'll be forking Jewely like a drunken hacker!</p>
+    <p>As you can see, Jeweli's aim is to step out of your design's way and let you leverage the inherit strengths of Rails. If you have no Rails experience, then the jeweli starter commands are a good way to not only accomplish your designs quickly but also <strong>learn some Rails</strong>. Before you know it, you'll be forking Jeweli like a drunken hacker!</p>
 
-    <p>Once you've mastered the ins-and-outs of the basic Jewely approach, start making your own pages and own CSS. Or try another jewely starter site with other Jewely seed commands.</p>
+    <p>Once you've mastered the ins-and-outs of the basic Jeweli approach, start making your own pages and own CSS. Or try another jeweli starter site with other Jeweli seed commands.</p>
 eos
 end

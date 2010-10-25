@@ -1,4 +1,4 @@
-class JewelyUrl
+class JeweliUrl
   
   attr_accessor   :params, :only_public
   

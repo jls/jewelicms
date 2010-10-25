@@ -1,13 +1,13 @@
-jewely = {};
-jewely.admin = {};
-jewely.admin.positionChannelList = function(){
+jeweli = {};
+jeweli.admin = {};
+jeweli.admin.positionChannelList = function(){
 	var l = document.getElementById('new-post-link').offsetLeft;
 	document.getElementById('new-post-channels-list').style.left = l + "px";
 }
-jewely.admin.previewArticle = function(){
+jeweli.admin.previewArticle = function(){
 	// Get all of the data value fields
 	var fields_container = document.getElementById('article-fields');
-	var fields = jewely.admin.getElementsByClass('rich-edit-text', fields_container, 'textarea');
+	var fields = jeweli.admin.getElementsByClass('rich-edit-text', fields_container, 'textarea');
 	var preview_area = document.getElementById('preview-container');
 	for(var i = 0; i < fields.length; i++){
 		preview_area.innerHTML += "<p>" + fields[i].value + "</p>";
@@ -17,7 +17,7 @@ jewely.admin.previewArticle = function(){
 
 // Awesome implementation of getElementsByClass by 
 // Dustin Diaz: http://www.dustindiaz.com/getelementsbyclass/
-jewely.admin.getElementsByClass = function(searchClass,node,tag) {
+jeweli.admin.getElementsByClass = function(searchClass,node,tag) {
 	var classElements = new Array();
 	if ( node == null )
 		node = document;
@@ -37,7 +37,7 @@ jewely.admin.getElementsByClass = function(searchClass,node,tag) {
 
 var virgin = true; // A sentinel telling us if updateSlug has been called yet
 
-jewely.admin.updateSlug = function()
+jeweli.admin.updateSlug = function()
 {
 	// TRICKY: only update the slug if it was empty on page load
 	if (virgin == true && document.getElementById("article_slug").value != "") {

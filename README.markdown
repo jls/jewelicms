@@ -1,18 +1,18 @@
 ## Quickstart
 
-    git clone http://github.com/jls/jewelycms.git
-    cd jewelycms
+    git clone http://github.com/jls/jewelicms.git
+    cd jewelicms
     cp config/database.yml.template config/database.yml
     sudo rake gems:install
     rake db:setup
     
-This will clone the Jewely repository, setup the database and give you a fresh install ready to go. 
+This will clone the Jeweli repository, setup the database and give you a fresh install ready to go. 
 
 ## Blog in 15 Minutes Tutorial
 
-A tutorial to get a blog up and running on Jewely in 15 minutes.  This will walk you through every step needed to recreate [jewelycms.com](http://jewelycms.com).
+A tutorial to get a blog up and running on Jeweli in 15 minutes.  This will walk you through every step needed to recreate [jewelicms.com](http://jewelicms.com).
 
-[http://jewelycms.com/read/a-rails-blog-in-15-minutes](http://jewelycms.com/read/a-rails-blog-in-15-minutes)
+[http://jewelicms.com/read/a-rails-blog-in-15-minutes](http://jewelicms.com/read/a-rails-blog-in-15-minutes)
 
 ## Setting up Akismet Spam Service
 

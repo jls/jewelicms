@@ -1,4 +1,4 @@
-/* Stylesheet for administration section of Jewely */
+/* Stylesheet for administration section of Jeweli */
 
 html {
 	background: -moz-linear-gradient(top, #f00 0%, #FFFFFF 57%, #DBDBDB 100%); /* firefox */
@@ -196,7 +196,7 @@ h4 {
 }
 
 #footer h3 {
-	background: transparent url(/images/admin/jewely-logo.png) no-repeat left top;
+	background: transparent url(/images/admin/jeweli-logo.png) no-repeat left top;
 	text-indent: -9999px;
 	width:77px;
 	height:19px;

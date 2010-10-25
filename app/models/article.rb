@@ -1,4 +1,4 @@
-require 'jewely_url'
+require 'jeweli_url'
 class Article < ActiveRecord::Base
 
   cattr_accessor :per_page
@@ -97,10 +97,10 @@ class Article < ActiveRecord::Base
     }.merge!(options) # User options win.
     
     if opts[:from_url]
-      jewely_url = JewelyUrl.new opts[:from_url]
-      opts[:channel] = jewely_url.channel.slug if jewely_url.channel
-      opts[:category] = jewely_url.category.slug if jewely_url.category
-      opts[:slug] = jewely_url.article.slug if jewely_url.article
+      jeweli_url = JeweliUrl.new opts[:from_url]
+      opts[:channel] = jeweli_url.channel.slug if jeweli_url.channel
+      opts[:category] = jeweli_url.category.slug if jeweli_url.category
+      opts[:slug] = jeweli_url.article.slug if jeweli_url.article
     end
     
     # Normalize a few of the options values to make sure
