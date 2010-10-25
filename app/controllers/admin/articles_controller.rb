@@ -5,7 +5,7 @@ class Admin::ArticlesController < Admin::AdminController
   end
   
   def new
-    @article = current_user.articles.new(:channel_id => params[:channel_id])
+    @article = current_user.articles.new(:channel_id => params[:channel_id], :is_published => true)
   end
   
   def create

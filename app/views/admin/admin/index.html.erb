@@ -15,13 +15,13 @@
       <li><%= link_to article.title, edit_admin_article_path(article), :class => "new article"%> added in <a href="#" class="channel"><%= article.channel.name %></a> by 
 	<span class="author">
 	      <%= article.author ? link_to(article.author.name, edit_admin_user_path(article.author)) : 'an uncredited author' -%>
-	</span> <span class="time"><%= time_ago_in_words(article.created_at) %> ago</li>
+	</span> <span class="time"><%= time_ago_in_words(article.created_at) %> ago</span></li>
     <% end -%>
     <% @channels.each do |channel| -%>
-      <li>A new channel <a href="#" class="new channel"><%= channel.name %></a> created <span class="time"><%= time_ago_in_words(channel.created_at) %> ago</li>
+      <li>A new channel <a href="#" class="new channel"><%= channel.name %></a> created <span class="time"><%= time_ago_in_words(channel.created_at) %> ago</span></li>
     <% end -%>
     <% @users.each do |user| -%>
-      <li>A new user <a href="#" class="new user"><%= user.name %></a> joined <span class="time"><%= time_ago_in_words(user.created_at) %> ago</li>
+      <li>A new user <a href="#" class="new user"><%= user.name %></a> joined <span class="time"><%= time_ago_in_words(user.created_at) %> ago</span></li>
     <% end -%>
 </ul>
 <% end -%>

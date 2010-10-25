@@ -38,11 +38,13 @@ label {
 }
 
 #article-options fieldset {
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;	
 	background: rgba(180,180,180,.3);	
 }
 
 #article-options {
-	margin-top: 24px;
+	margin-top: 18px;
 }
 
 .data-value-title-area {
@@ -54,7 +56,11 @@ label {
 }
 
 #article-fields textarea, #article-fields input{
-	width: 100%;
+	width: 99%;
+}
+
+#article-fields textarea {
+	width: 97.5%;
 }
 
 	/* Lists */

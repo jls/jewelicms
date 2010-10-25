@@ -12,7 +12,7 @@
 <%= error_messages_for :article %>
 
 <% form_for @article, :url => (@article.new_record?) ? admin_articles_path : admin_article_path(@article) do |f| %>
-  <div id="article-fields" class="span-12 append-12 last">
+  <div id="article-fields" class="span-12 last">
     <%= check_box_tag 'preview_option', 1, false, :style => 'display:none' %>
     <%= f.hidden_field :channel_id %>
 	<p class="group">
@@ -48,11 +48,10 @@
           <% end -%>
         <% end -%>
       <% end -%>
-
   </div>
-  <div id="article-options" class="span-12 append-12 last">
+  <div id="article-options" class="prepend-2 span-10 last">
+	<h3>Article Options</h3>
   	<fieldset>
-  		<legend>Options</legend>
   			<fieldset>
   				<legend>Categories</legend>	
   				<% if @article.channel.categories.length != 0 %>
@@ -94,8 +93,15 @@
 
   	</fieldset>  
   </div>
-  
-  <%= f.submit 'Save as Draft', :onclick => "document.getElementById('article_is_published').checked=false; return true;" -%>
-  <%= f.submit 'Save and Publish', :onclick => "document.getElementById('article_is_published').checked=true; return true;"%>
-  <%= f.submit 'Save and Preview', :onclick => "document.getElementById('preview_option').checked=true;return true;" %>
+	<div class="span-6 append-18 last">
+		<%= render :partial => "admin/help/hint", :locals => { 
+			:topic => "Like a draft?",
+			:hint => "<p>Then just uncheck <strong>published</strong> in Options to <strong>save this a draft</strong>.</p>"
+			} 
+		-%>
+	</div>
+	<div class="span-24 last">	  
+	  <%= f.submit 'Preview', :onclick => "document.getElementById('preview_option').checked=true;return true;" %>
+	  <%= f.submit 'Commit', :onclick => "document.getElementById('article_is_published').checked=true; return true;"%> 	
+	</div>
 <% end -%>
