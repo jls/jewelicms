@@ -26,10 +26,22 @@ label {
 	text-transform: capitalize;
 }
 
-#article-options>label {
-	float: left;
-	vertical-align: 5px;
+#article-options {
+	margin-top: -16px;
 }
+
+
+	#article-options>label {
+		float: left;
+		vertical-align: 5px;
+	}
+
+	#article-options fieldset {
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;	
+		background: rgba(180,180,180,.3);	
+	}
+
 
 .formatting-options {
 	text-align: right;
@@ -37,15 +49,7 @@ label {
 	display: inline-block;
 }
 
-#article-options fieldset {
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;	
-	background: rgba(180,180,180,.3);	
-}
 
-#article-options {
-	margin-top: 18px;
-}
 
 .data-value-title-area {
 	margin-top: 24px;
