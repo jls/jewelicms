@@ -2,14 +2,9 @@
 
 html {
 	background: -moz-linear-gradient(top, #f00 0%, #FFFFFF 57%, #DBDBDB 100%); /* firefox */
-
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(57%,#FFFFFF), color-stop(100%,#DBDBDB)); /* webkit */
-
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#DBDBDB',GradientType=0 ); /* ie */
-	
 	background: #ffffff; /* old browsers */ /* leaving this here until we figure out why there's a gap at bottom */
-	
-	
 	height: 100%;	
 }
 
@@ -26,48 +21,7 @@ label {
 	text-transform: capitalize;
 }
 
-#article-options {
-	margin-top: -16px;
-}
-
-
-	#article-options>label {
-		float: left;
-		vertical-align: 5px;
-	}
-
-	#article-options fieldset {
-		-moz-border-radius: 5px;
-		-webkit-border-radius: 5px;	
-		background: rgba(180,180,180,.3);	
-	}
-
-
-.formatting-options {
-	text-align: right;
-	float: right;
-	display: inline-block;
-}
-
-
-
-.data-value-title-area {
-	margin-top: 24px;
-}
-
-.data-value-title-area select {
-	margin-top: 0;
-}
-
-#article-fields textarea, #article-fields input{
-	width: 99%;
-}
-
-#article-fields textarea {
-	width: 97.5%;
-}
-
-	/* Lists */
+/* Lists */
 
 ul {
 	list-style: none;
@@ -422,6 +376,50 @@ h4 {
 	
 }
 
+/* New or editing article */
+#article-options {
+	margin-top: -16px;
+}
+
+	#article-options>label {
+		float: left;
+		vertical-align: 5px;
+	}
+
+	#article-options fieldset {
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;	
+		background: rgba(180,180,180,.3);	
+	}
+
+#article-fields {
+	overflow: hidden;
+}
+
+	#article-fields .data-value-title-area {
+		margin-top: 24px;
+	}
+
+		#article-fields .data-value-title-area select {
+			margin-top: 0;
+		}
+
+	#article-fields textarea, 
+	#article-fields input{
+		width: 99%;
+	}
+
+	#article-fields textarea {
+		width: 97.5%;
+	}
+
+	#article-fields .formatting-options {
+		text-align: right;
+		float: right;
+		display: inline-block;
+	}
+
+
 /* Settings */
 
 #settings-primary {
@@ -436,36 +434,36 @@ h4 {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#FFFFFF',GradientType=0 ); /* ie */	
 }
 
-#settings-menu-inner {
-	background: transparent url(/images/admin/block-mask.png) repeat-y 0 0;
-	height: 200px;
+	#settings-menu #settings-menu-inner {
+		background: transparent url(/images/admin/block-mask.png) repeat-y 0 0;
+		height: 200px;
 	
-}
+	}
 
-#settings-menu ul {
-	float: right;
-	margin: 50px 0 10px 0;
-	padding: 0;	
-	width: 100%;
-	min-height: 130px;	
-}
+	#settings-menu ul {
+		float: right;
+		margin: 50px 0 10px 0;
+		padding: 0;	
+		width: 100%;
+		min-height: 130px;	
+	}
 
-#settings-menu ul li {
-	text-align: right;
-	padding: 0;
-	margin: 0;
-	padding-top: 0px;
-	padding-bottom: 0px;
-	position: relative;
-	height: 24px;
-	display: block;
-	background: rgba(108,108,108,1) url(/images/admin/block-mask.png) no-repeat top left;
-	border-bottom: 1px solid #fff;
-}
+		#settings-menu ul li {
+			text-align: right;
+			padding: 0;
+			margin: 0;
+			padding-top: 0px;
+			padding-bottom: 0px;
+			position: relative;
+			height: 24px;
+			display: block;
+			background: rgba(108,108,108,1) url(/images/admin/block-mask.png) no-repeat top left;
+			border-bottom: 1px solid #fff;
+		}
 
-#settings-menu ul li:hover {
-	background-color: #06c;	
-}
+		#settings-menu ul li:hover {
+			background-color: #06c;	
+		}
 
 body.settings.index #settings-menu ul li#general-tab,
 body.users.index #settings-menu ul li#users-tab,
