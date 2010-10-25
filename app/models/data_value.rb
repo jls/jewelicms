@@ -9,12 +9,18 @@ class DataValue < ActiveRecord::Base
   def filtered_value
     return data_value unless filter
     return markdowned_value if filter.name == "Markdown"
+    return textiled_value if filter.name == "Textile"
+    
   end
   
   protected
   
   def markdowned_value
     RDiscount.new(self.data_value).to_html
+  end
+  
+  def textiled_value
+    RedCloth.new(self.data_value).to_html
   end
   
 end

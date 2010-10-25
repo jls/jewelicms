@@ -1,12 +1,15 @@
 /* Stylesheet for administration section of Jewely */
 
 html {
-	background: #ffffff; /* old browsers */
 	background: -moz-linear-gradient(top, #f00 0%, #FFFFFF 57%, #DBDBDB 100%); /* firefox */
 
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(57%,#FFFFFF), color-stop(100%,#DBDBDB)); /* webkit */
 
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#DBDBDB',GradientType=0 ); /* ie */
+	
+	background: #ffffff; /* old browsers */ /* leaving this here until we figure out why there's a gap at bottom */
+	
+	
 	height: 100%;	
 }
 
