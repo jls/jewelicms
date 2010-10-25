@@ -17,7 +17,7 @@ class Admin::ArticlesController < Admin::AdminController
     if @data_values
       @data_values.each do |k,v|
         data_field = DataField.find(k.to_i)
-        filter_id = (@filters[k].blank?) ? nil : @filters[k].to_i
+        filter_id = (@filters.nil? || @filters[k].blank?) ? nil : @filters[k].to_i
         @article.data_values.create(:data_field_id => data_field.id, :data_value => v, :filter_id => filter_id)
       end 
     end
@@ -56,7 +56,7 @@ class Admin::ArticlesController < Admin::AdminController
     if @data_values
       @data_values.each do |k,v|
         data_field = DataField.find(k.to_i)
-        filter_id = (@filters[k].blank?) ? nil : @filters[k].to_i
+        filter_id = (@filters.nil? || @filters[k].blank?) ? nil : @filters[k].to_i
         if existing_data_value = @article.data_values.find_by_data_field_id(data_field.id)
           existing_data_value.update_attribute(:data_value, v)
           existing_data_value.update_attribute(:filter_id, filter_id)
