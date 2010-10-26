@@ -1,4 +1,4 @@
 rails --version 2.3.8
 will_paginate
 rdiscount
-redcloth
+RedCloth
