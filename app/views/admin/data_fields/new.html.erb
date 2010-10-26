@@ -1,4 +1,4 @@
-<h2>New Data Field for a Channel</h2>
+<h2><%= (@data_field.new_record?) ? "New" : 'Editing' %> Data Field for a Channel</h2>
 <%= error_messages_for :data_field %>
 
 <% form_for @data_field, :url => (@data_field.new_record?) ? admin_data_fields_path : admin_data_field_path(@data_field) do |f| %>

@@ -1,8 +1,14 @@
-<h2>New Category</h2>
+<h2><%= (@category.new_record?) ? "New" : 'Editing' %> Category for a Channel</h2>
 <%= error_messages_for :category %>
 
 <% form_for @category, :url => (@category.new_record?) ? admin_categories_path : admin_category_path(@category) do |f| %>
-  <%= f.collection_select :channel_id, Channel.find(:all), "id", "name" %>
-  <%= f.text_field :name %>
-  <%= f.submit %>
+	<p>
+		<label>Name</label> e.g. <em>news</em>, <em>general</em><br />
+		<%= f.text_field :name %>
+	</p>
+	<p>
+		<label>For channel</label>
+		<%= f.collection_select :channel_id, Channel.find(:all), "id", "name" %>
+	</p>
+	<%= f.submit %>
 <% end %>

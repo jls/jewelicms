@@ -1,7 +1,7 @@
 <div id="settings-primary" class="span-18 append-1">
 <h2>Settings</h2>
 
-	<h2>New User</h2>
+	<h3><%= (@user.new_record?) ? "New" : 'Editing' %> User</h3>
   <% @user.password = @user.password_confirmation = nil %>
 
   <%= error_messages_for :user %>

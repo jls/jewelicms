@@ -1,6 +1,6 @@
 # Lookup the data field types
 rich_field_type = DataFieldType.find_by_name('Textarea')
-text_field_type = DataFieldType.find_by_name('Text Input')
+text_field_type = DataFieldType.find_by_name('Text Field')
 
 # Lookup the admin user
 admin_user = User.find_by_login('admin')
