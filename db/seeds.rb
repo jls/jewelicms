@@ -8,8 +8,8 @@ Filter.create(:name => 'Markdown') unless filter = Filter.find_by_name('Markdown
 # Create the administrative user.
 unless User.find_by_login('admin')
   admin_user = User.create( :login => 'admin', 
-                            :email => 'info@jewelycms.com', 
+                            :email => 'info@jewelicms.com', 
                             :name => 'Administrator', 
-                            :password => 'jewely', 
-                            :password_confirmation => 'jewely')
+                            :password => 'jeweli', 
+                            :password_confirmation => 'jeweli')
 end

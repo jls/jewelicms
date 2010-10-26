@@ -20,7 +20,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'admin', :controller => "Admin::Admin"
   
   map.root :controller => :channel, :action => :home
-  map.jewely ':renders_with/*parts.:format', :controller => :channel, :action => :index
+  map.jeweli ':renders_with/*parts.:format', :controller => :channel, :action => :index
   
   map.channel_view ':renders_with.:format', :controller => :channel, :action => :index
   map.render_view ':renders_with.:format', :controller => :channel, :action => :index

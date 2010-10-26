@@ -33,14 +33,14 @@
   <% if header = yield(:head) -%>
     <%= header %>
   <% end -%>
-	<title>Jewely Administration</title>
+	<title>Jeweli Administration</title>
 </head>
 
 <body class="<%= params[:controller].split("/").last -%> <%= params[:action] -%>">
   <div class="container">
  	<div id="header" class="span-24 last">
   		<h1>
-  			<a href="/admin/">Jewely Admin</a>
+  			<a href="/admin/">Jeweli Admin</a>
   		</h1>
 		<hr />
  		<div id="nav" class="group">
@@ -66,7 +66,7 @@
     	<% end %>
 		<hr/>
   		<div id="footer" class="span-24 last">
-  			<span class="admin-info">Hi, <%= current_user.name -%> [<%= link_to 'Logout', logout_path %>]</span> <span class="separator">|</span> <span class="about">Copyright &copy; <a href="http://www.jewelycms.com">Jewely CMS</a>, <%= DateTime.now.year %></span> <span class="separator">|</span> <h3>Jewely CMS</h3>
+  			<span class="admin-info">Hi, <%= current_user.name -%> [<%= link_to 'Logout', logout_path %>]</span> <span class="separator">|</span> <span class="about">Copyright &copy; <a href="http://www.jewelicms.com">Jeweli CMS</a>, <%= DateTime.now.year %></span> <span class="separator">|</span> <h3>Jeweli CMS</h3>
   		</div><!-- footer -->
   </div><!-- container -->
 

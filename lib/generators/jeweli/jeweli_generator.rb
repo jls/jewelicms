@@ -1,4 +1,4 @@
-class JewelyGenerator < Rails::Generator::NamedBase
+class JeweliGenerator < Rails::Generator::NamedBase
   attr_reader :layout_name
   def initialize(runtime_args, runtime_options = {})
     super
