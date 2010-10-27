@@ -70,5 +70,13 @@ class ChannelController < ApplicationController
     end
     
   end
+
+  protected
+
+    # if something is an ajax call, let's assume that you don't want the entire layout rendered with it
+    def render(*args)
+      args.first[:layout] = false if request.xhr? and args.first[:layout].nil?
+    	super
+    end
   
 end
