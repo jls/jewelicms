@@ -14,7 +14,7 @@ class ChannelController < ApplicationController
     # We don't have a channel that matches the renders_with param
     # so we assume they intend to have a matching template in the templates directory.
     # In the future we should check to see if the template exists first.
-    return render(:template => "templates/#{params[:renders_with]}") unless @channel
+    return render(:template => "templates/#{params[:renders_with]}", :layout => !request.xhr?) unless @channel
     @render_as = @channel.render_as || @channel
     
     if jeweli_url.is_channel_page?
@@ -30,7 +30,9 @@ class ChannelController < ApplicationController
     end
     
     respond_to do |wants|
-      wants.html
+      wants.html {
+        render(:layout => !request.xhr?)
+      }
       wants.rss
     end
   end
@@ -70,13 +72,5 @@ class ChannelController < ApplicationController
     end
     
   end
-
-  protected
-
-    # if something is an ajax call, let's assume that you don't want the entire layout rendered with it
-    def render(*args)
-      args.first[:layout] = false if request.xhr? and args.first[:layout].nil?
-    	super
-    end
   
 end
