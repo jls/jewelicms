@@ -15,7 +15,6 @@ a {
 	transition:color .2s ease-in;
 }
 
-
 hr {
 	display: none;
 }
@@ -294,6 +293,10 @@ h4 {
 
 /* Buttons */
 .action-style {
+	-webkit-transition:background .2s ease-in;  
+	-moz-transition:background .2s ease-in;  
+	-o-transition:background .2s ease-in;  
+	transition:background .2s ease-in;	
 	background: rgba(25,25,25,.9);
 	display: inline-block;
 	padding: 5px 10px 6px;
@@ -317,7 +320,7 @@ h4 {
 
 
 .action-style:hover {
-	background: #06c;	
+	background: #06c;
 }
 
 .action-style.secondary {
