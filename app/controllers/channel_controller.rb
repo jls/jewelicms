@@ -3,7 +3,7 @@ class ChannelController < ApplicationController
 
   def home
     @channels = Channel.all_public
-    render :template => "templates/index"
+    render :template => "templates/index", :layout => !request.xhr?
   end
   
   def index
@@ -26,7 +26,7 @@ class ChannelController < ApplicationController
       @articles = (request.format.html?) ? @category.articles.published.paginate(:page => params[:page]) : @category.articles.published
     elsif jeweli_url.is_article_page?
       @article = jeweli_url.article
-      return render(:action => :article_by_slug)
+      return render(:action => :article_by_slug, :layout => !request.xhr?)
     end
     
     respond_to do |wants|
@@ -47,7 +47,7 @@ class ChannelController < ApplicationController
     respond_to do |wants|
       wants.html { 
         @articles = @category.articles.published.paginate(:page => params[:page]) 
-        render(:action => :index)
+        render(:action => :index, :layout => !request.xhr?)
       }
       wants.rss { 
         @articles = @category.articles.published 
@@ -59,7 +59,7 @@ class ChannelController < ApplicationController
   def article_by_slug
     @channel = Channel.all_public.find_by_slug(params[:renders_with])
     @article = Article.find_by_slug(params[:article_slug])    
-    return render(:template => "templates/#{params[:renders_with]}") unless @channel
+    return render(:template => "templates/#{params[:renders_with]}", :layout => !request.xhr?) unless @channel
 
     # We do have a channel so 
     # follow the normal route of using
@@ -68,7 +68,7 @@ class ChannelController < ApplicationController
     @render_as = @channel.render_as || @channel
     
     respond_to do |wants|
-      wants.html
+      wants.html{ render(:layout => !request.xhr?) }
     end
     
   end
