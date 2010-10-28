@@ -8,6 +8,14 @@ html {
 	height: 100%;	
 }
 
+a {
+	-webkit-transition:color .2s ease-in;  
+	-moz-transition:color .2s ease-in;  
+	-o-transition:color .2s ease-in;  
+	transition:color .2s ease-in;
+}
+
+
 hr {
 	display: none;
 }
