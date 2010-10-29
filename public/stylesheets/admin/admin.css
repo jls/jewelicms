@@ -227,6 +227,7 @@ h4 {
 
 .hint {
 	width: 100%;
+	max-width: 700px;
 	position: relative;
 	background: rgba(25,25,25,.9);
 	color: rgba(170,170,170,1);
