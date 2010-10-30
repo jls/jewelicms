@@ -7,7 +7,8 @@ class Article < ActiveRecord::Base
   include Sluggable
   before_validation :generate_slug
 
-  validates_presence_of :title, :channel_id
+  validates_presence_of :title
+  validates_presence_of :channel_id
   validates_uniqueness_of :slug, :on => :create, :message => "must be unique"
   
   has_and_belongs_to_many :categories

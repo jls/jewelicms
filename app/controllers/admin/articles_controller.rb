@@ -6,23 +6,28 @@ class Admin::ArticlesController < Admin::AdminController
   
   def new
     @article = current_user.articles.new(:channel_id => params[:channel_id], :is_published => true)
+    @data_values = {}
+    @filters = {}
   end
   
   def create
     @data_values = params.delete(:data_values)
     @filters = params.delete(:filters)
     @article = Article.create(params[:article])
-    @article.update_attribute(:author_id, current_user.id)
-    # Save all of the data values
-    if @data_values
-      @data_values.each do |k,v|
-        data_field = DataField.find(k.to_i)
-        filter_id = (@filters.nil? || @filters[k].blank?) ? nil : @filters[k].to_i
-        @article.data_values.create(:data_field_id => data_field.id, :data_value => v, :filter_id => filter_id)
-      end 
+    if @article.errors.empty?
+      @article.update_attribute(:author_id, current_user.id)
+    
+      # Save all of the data values
+      if @data_values
+        @data_values.each do |k,v|
+          data_field = DataField.find(k.to_i)
+          filter_id = (@filters.nil? || @filters[k].blank?) ? nil : @filters[k].to_i
+          @article.data_values.create(:data_field_id => data_field.id, :data_value => v, :filter_id => filter_id)
+        end 
+      end
     end
     respond_to do |wants|
-      if @article
+      if @article.valid?
         flash[:notice] = 'Article was successfully created.'
         wants.html { 
           if params[:preview_option]
@@ -42,6 +47,7 @@ class Admin::ArticlesController < Admin::AdminController
   
   def edit
     @article = Article.find(params[:id])
+    @data_values = @filters = {}
     render :action => 'new'
   end
   

@@ -52,7 +52,7 @@
     			<li><%= link_to 'Comments', admin_comments_path, :class=>"action-style", :id => "comments-nav-item", :title => 'View and edit any comments' %><!-- (<%= link_to '?', '#', :class=>"help-item not-implemented"%>)--></li>
     			<li><%= link_to 'Channels', admin_channels_path, :class=>"action-style", :id => "channels-nav-item", :title => 'Edit or add any channels so that you can publish articles to them' %><!-- (<%= link_to '?', '#', :class=>"help-item not-implemented"%>)--></li>
     			<li><%= link_to 'Categories', admin_categories_path, :class=>"action-style", :id => "categories-nav-item", :title => "Add, edit, or delete any channel's categories, which are used to tag your articles" %><!-- (<%= link_to '?', '#', :class=>"help-item not-implemented"%>)--></li>
-    			<li><%= link_to 'View Site', root_path, :class => "action-style secondary", :title => 'View your actual site (external link)' %></li>
+    			<li><%= link_to 'View Site', root_path, :class => "action-style secondary", :title => 'View your actual site (external link)', :target => "blank" %></li>
     			<li><%= link_to 'Settings', admin_users_path, :class => "action-style secondary", :title => 'Edit settings pertaining to your site like users, vital information, and some server settings' %></li>
     		</ul>
     	</div><!-- navigation -->
