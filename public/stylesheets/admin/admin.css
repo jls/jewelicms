@@ -8,6 +8,13 @@ html {
 	height: 100%;	
 }
 
+a {
+	-webkit-transition:color .2s ease-in;  
+	-moz-transition:color .2s ease-in;  
+	-o-transition:color .2s ease-in;  
+	transition:color .2s ease-in;
+}
+
 hr {
 	display: none;
 }
@@ -97,7 +104,6 @@ ul#common-tasks .time {
 				-moz-box-shadow: 0 1px 3px #999;
 				-webkit-box-shadow: 0 1px 3px #999;	
 				list-style: none;
-				border: 1px solid #000;
 			}
 
 			#nav div#new-post-channels-list ul li{
@@ -221,6 +227,7 @@ h4 {
 
 .hint {
 	width: 100%;
+	max-width: 700px;
 	position: relative;
 	background: rgba(25,25,25,.9);
 	color: rgba(170,170,170,1);
@@ -286,6 +293,10 @@ h4 {
 
 /* Buttons */
 .action-style {
+	-webkit-transition:background .2s ease-in;  
+	-moz-transition:background .2s ease-in;  
+	-o-transition:background .2s ease-in;  
+	transition:background .2s ease-in;	
 	background: rgba(25,25,25,.9);
 	display: inline-block;
 	padding: 5px 10px 6px;
@@ -309,7 +320,7 @@ h4 {
 
 
 .action-style:hover {
-	background: #06c;	
+	background: #06c;
 }
 
 .action-style.secondary {

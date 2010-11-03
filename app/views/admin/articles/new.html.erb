@@ -28,22 +28,18 @@
       <% fields_for :data_values do |data_values| -%>
 		<% @article.channel.data_fields.each do |data_field| -%>
 		  <div class="data-value-title-area">
-          <label><%= data_field.label %></label>
-          <% if data_field.data_field_type_id == 1 -%>
-	        <%= data_values.text_field data_field.id, :value => @article.value_for(data_field.label) -%>
+        <label><%= data_field.label %></label>
+        <% if data_field.data_field_type_id == 1 -%>
+	        <%= text_field_tag "data_values[#{data_field.id}]", @article.value_for(data_field.label) || @data_values[data_field.id.to_s] -%>
 			</div> <!-- end data-value-title-area -->
-          <% else -%>
-	            <div class="formatting-options">Format: 
-		            <%= collection_select "filters", 
-		                                  data_field.id, 
-		                                  Filter.find(:all), 
-		                                  :id, :name, 
-		                                  :include_blank => 'None', 
-		                                  :selected => @article.data_values.current_filter_id_for(data_field) -%>
-				</div>
+        <% else -%>
+	        <div class="formatting-options">Format: 
+	          <!-- select_tag name, option_tags, options -->
+	          <%= select_tag("filters[#{data_field.id}]", options_for_select(Filter.to_dropdown), :value => @article.data_values.current_filter_id_for(data_field)) %>
+	    	</div>
 		    </div> <!-- end data-value-title-area -->
 			<div class="text-field">
-            <%= data_values.text_area data_field.id, :size => "60x10", :class => 'rich-edit-text', :value => @article.value_for(data_field.label, false) %>
+            <%= text_area_tag "data_values[#{data_field.id}]", @article.value_for(data_field.label, false) || @data_values[data_field.id.to_s], :size => "60x10", :class => 'rich-edit-text' %>
 			</div>
           <% end -%>
         <% end -%>
