@@ -1,7 +1,5 @@
 class CommentsController < ApplicationController
   
-  before_filter :setup_article
-  
   def create
     @return_path = params[:comment].delete(:return_path)
     @article = Article.find(params[:comment][:article_id])
