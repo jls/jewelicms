@@ -4,14 +4,14 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />     
 	<link href='/images/favicon.ico' rel='icon' type='image/vnd.microsoft.icon'/>
-	<%= javascript_include_tag :defaults %>
+	<%= javascript_include_tag "admin/jquery.min", "admin/jquery-ui.min", "admin/jrails" %>
 	<%= javascript_include_tag "admin/cufon", "admin/fonts/DinProMedium_500.font.js", "admin/application", "admin/hints" %>
 
 	<!-- font stuff -->
 	<script type="text/javascript">
 		Cufon.replace('h1');
 		Cufon.replace('h2');
-		Cufon.replace('h3');		
+		Cufon.replace('h3');
 		Cufon.replace('#nav li'); // Main menu items
 		Cufon.replace('#settings-menu ul li a'); // Settings subnav
 	</script>

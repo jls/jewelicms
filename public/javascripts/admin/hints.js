@@ -1,15 +1,16 @@
 /* This file implements the hints hiding functionality. this can/should be rewritten as jquery or something else. and it should be linked to real preferences in the database eventually. */
 // The variable we'll use to check if jeweli hints cookie is set
-var cookieName = "show_jeweli_hints";
+var cookieName = "show_jeweli_hint_boxes";
 
-document.observe('dom:loaded', pageInit);
+jQuery(document).ready(function($) {
+  pageInit();
 
 function pageInit()
 {	
-	if ($('show_hints') == null) return;
-	$('show_hints').checked = (readCookie(cookieName) == null || readCookie(cookieName) == "true" || readCookie(cookieName) == true) ? true : false; // not sure if this statement is needed, but it's thorough at least
-	$('show_hints').observe('click', updateHintsCookie);	
-	$('close-btn').observe('click', closeHint);	
+	if ($('#show_hints') == null) return;
+	$('#show_hints').attr('checked', (readCookie(cookieName) == null || readCookie(cookieName) == "true" || readCookie(cookieName) == true) ? true : false); // not sure if this statement is needed, but it's thorough at least
+	$('#show_hints').bind('click', updateHintsCookie);	
+	$('#close-btn').bind('click', closeHint);	
 	checkHints();
     // This code runs as soon as possible once the DOM is available
    // $('myButton').observe('click', buttonClickHandler);
@@ -18,25 +19,25 @@ function pageInit()
 
 // Closes the element with id "hint-toggle"
 function closeHint () {
-	$('hint-toggle').setStyle({ display: 'none' });		
+	$('#hint-toggle').css('display', 'none');		
 }
 
 // Gets the value of the checkbox
 function updateHintsCookie () {
-	var v = $('show_hints').checked;
+	var v = $('#show_hints').checked;
 	createCookie(cookieName, v);
 }
 
 // Checks to see if hints should be on or off... and turns them on or off
 function checkHints () {
 	var displayVal = "none", h = readCookie(cookieName);
-	
+
 	if (h == null) {
 		createCookie(cookieName, true);
 		checkHints();
 	} else {
 		displayVal = (h == "true") ? "block" : "none";		
-		$('hint-toggle').setStyle({ display: displayVal });		
+		$('#hint-toggle').css('display', displayVal);		
 	}	
 }
 
@@ -64,3 +65,7 @@ function readCookie(name) {
 function eraseCookie(name) {
 	createCookie(name,"",-1);
 }
+
+});
+
+
