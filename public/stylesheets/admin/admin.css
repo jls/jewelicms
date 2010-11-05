@@ -109,6 +109,7 @@ ul#common-tasks .time {
 			#nav div#new-post-channels-list ul li{
 				color: #c0c0c0;
 				width: 100%;
+				display: block;
 			}
 
 			#nav div#new-post-channels-list a{
