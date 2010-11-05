@@ -4,6 +4,7 @@ DataFieldType.create(:name => 'Textarea') unless DataFieldType.find_by_name('Tex
 # This should be running in the migration, but it didn't for me, so ... 
 Filter.create(:name => 'Textile') unless filter = Filter.find_by_name('Textile')
 Filter.create(:name => 'Markdown') unless filter = Filter.find_by_name('Markdown')
+Filter.create(:name => 'None') unless filter = Filter.find_by_name('None')
 
 # Create the administrative user.
 unless User.find_by_login('admin')
