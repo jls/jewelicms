@@ -37,6 +37,12 @@
 </head>
 
 <body class="<%= params[:controller].split("/").last -%> <%= params[:action] -%>">
+	<% flash.each do |key, msg| %>
+	    <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_#{key}" %>
+	    <% content_tag :script, :type => "text/javascript" do -%>
+	        setTimeout('$("#notice_<%= key %>").hide("slow")', 5000);
+	    <% end %>
+	<% end %>	
   <div class="container">
  	<div id="header" class="span-24 last">
   		<h1>
