@@ -93,7 +93,6 @@ class Article < ActiveRecord::Base
     opts = {
       :order => :desc,
       :published => true,
-      :per_page => 10,
       :page => 1
     }.merge!(options) # User options win.
     
