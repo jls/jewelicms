@@ -40,6 +40,16 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal @articles[2], nil
   end
 
+  test "article get does not paginate if not specified" do
+    @articles = Article.get
+    assert_equal 3, @articles.size
+  end
+
+  test "article get paginates if specified" do
+    @articles = Article.get(:per_page => 2)
+    assert_equal(2, @articles.size)
+  end
+
   test "article get defaults desc order" do
     @general_category = categories(:blog_general_category)
     @articles = Article.get(:category => @general_category.slug)
