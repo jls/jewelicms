@@ -8,7 +8,7 @@
 <% else -%>
 <ul id="common-tasks">
     <% @comments.each do |comment| -%>
-      <li><a href="#" class="new comment"><%= comment.body %></a> by <span class="author"><%= comment.name%></span> <span class="time"><%= time_ago_in_words(comment.created_at) %> ago</li>
+      <li><%= link_to comment.body, admin_comments_path, :class => "new comment" %> by <span class="author"><%= comment.name%></span> <span class="time"><%= time_ago_in_words(comment.created_at) %> ago</li>
     <% end -%>
     <% @articles.each do |article| -%>
 
