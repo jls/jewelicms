@@ -14,14 +14,13 @@
 <% form_for @article, :url => (@article.new_record?) ? admin_articles_path : admin_article_path(@article) do |f| %>
   <div id="article-fields" class="span-12 last">
     <%= check_box_tag 'preview_option', 1, false, :style => 'display:none' %>
-    <%= f.hidden_field :author_id %>
     <%= f.hidden_field :channel_id %>
 	  <p class="group">
-      <label for="article_title">Title</label><br/>
+	    <%= f.label :title %><br/>
       <%= f.text_field :title, :size => "50", :onkeyup => "jeweli.admin.updateSlug();" %>
 	  </p>
 	  <p class="group">
-      <label for="article_slug">Title in the url</label><br/>
+      <%= f.label :slug, "Title in the url" %><br/>
       <%= f.text_field :slug, :size => "50" %><br/>
       <span class="note">Also known as the "slug". Leave blank to have it generated for you</span>
 	  </p>
