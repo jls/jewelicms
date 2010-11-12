@@ -44,47 +44,43 @@
   </div>
   <div id="article-options" class="prepend-2 span-10 last">
 	<h3>Article Options</h3>
-  	<fieldset>
-  			<fieldset>
-  				<legend>Categories</legend>	
-  				<% if @article.channel.categories.length != 0 %>
-  				    <ul>
-  				      <% @article.channel.categories.each do |category| -%>
-  			  	      <li>
-  			  	        <%= check_box_tag "article[category_ids][]", category.id, @article.categories.include?(category), :id => "article_category_#{category.id}" -%>
-  			  	        <%= label_tag "article_category_#{category.id}", category.name %>
-  			  	      </li>
-  				      <% end -%>
-  			      	</ul>
-  				<% else %>
-  					No categories have been created to assign. You can create a 
-  				<% end %>
-  				<%= link_to 'New Category', new_admin_category_path(:channel_id => @article.channel) %>
-  			</fieldset>
-
-			<fieldset>
-				<legend>Comments</legend>
-				<div class="group">
-				<!-- comments enabled? -->
-  				<%= f.check_box :comments_enabled %><label for="article_comments_enabled">Comments Enabled?</label>				
-				</div>
-			</fieldset>
-
-			<fieldset>
-				<legend>Authorship</legend>
-				<div class="group">
-  				<!-- author -->
-				<label for="article_author_id">Author:</label> 
-				<%= f.collection_select :author_id, User.find(:all), :id, :name %>				
-				</div>
-				
-				<div class="group">
-				<!-- is published? -->
-  		    	<%= f.check_box :is_published %><label for="article_is_published">Published</label>
-				</div>
-			</fieldset>
-
-  	</fieldset>  
+  <fieldset>
+		<fieldset>
+			<legend>Categories</legend>	
+		  <% if @article.channel.categories.length != 0 %>
+			  <ul>
+			    <% @article.channel.categories.each do |category| -%>
+		        <li>
+		          <%= check_box_tag "article[category_ids][]", category.id, @article.categories.include?(category), :id => "article_category_#{category.id}" -%>
+		          <%= label_tag "article_category_#{category.id}", category.name %>
+		        </li>
+			    <% end -%>
+		  	</ul>
+			<% else %>
+				No categories have been created to assign. You can create a 
+			<% end %>
+			<%= link_to 'New Category', new_admin_category_path(:channel_id => @article.channel) %>
+		</fieldset>
+		<fieldset>
+		  <legend>Comments</legend>
+		  <div class="group">
+		    <!-- comments enabled? -->
+			  <%= f.check_box :comments_enabled %><label for="article_comments_enabled">Comments Enabled?</label>				
+		  </div>
+	  </fieldset>
+		<fieldset>
+		  <legend>Authorship</legend>
+		  <div class="group">
+			  <!-- author -->
+		    <label for="article_author_id">Author:</label> 
+		    <%= f.collection_select :author_id, User.find(:all), :id, :name %>				
+		  </div>
+			<div class="group">
+		    <!-- is published? -->
+		  	<%= f.check_box :is_published %><label for="article_is_published">Published</label>
+		  </div>
+		</fieldset>
+	</fieldset>  
   </div>
 	<div class="span-6 append-18 last">
 		<%= render :partial => "admin/help/hint", :locals => { 
