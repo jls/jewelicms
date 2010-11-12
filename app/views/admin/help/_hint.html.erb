@@ -2,14 +2,7 @@
 	<!-- id is set only for prototype stuff. we can nix the ids when we use soemthing else -->
 	<div class="close-btn" id="close-btn"><a href="#">x</a></div>
 	
-	<h3>
-		<!-- (Sam) I am sure there is a better rails way to do this but I don't know it yet -->
-	    <%begin%>
-	      <%= topic %>
-	    <%rescue%>
-	      Tip
-	    <%end%>
-	</h3>
+	<h3><%= (local_assigns.has_key? :topic) ? topic : "Tip" %></h3>
 	<div class="hint-icon">
 	</div>
 	<div class="hint-body-wrapper">
@@ -18,5 +11,4 @@
 		</div>
 		<input id="show_hints" name="show_hints" type="checkbox" value="1" checked="checked" /><label for="show_hints">Show hints</label> 
 	</div>
-	
 </div>
