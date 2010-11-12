@@ -1,6 +1,7 @@
 class DataValue < ActiveRecord::Base
   
-  validates_presence_of :article_id, :data_field_id, :data_value
+  validates_presence_of :data_field_id
+  validates_associated :article
   
   belongs_to :article
   belongs_to :data_field
@@ -10,7 +11,6 @@ class DataValue < ActiveRecord::Base
     return data_value unless filter
     return markdowned_value if filter.name == "Markdown"
     return textiled_value if filter.name == "Textile"
-    
   end
   
   protected

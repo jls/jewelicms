@@ -26,15 +26,11 @@ class Article < ActiveRecord::Base
       
       (filtered) ? value.filtered_value : value.data_value
     end
-    
-    def current_filter_id_for data_field
-      value = find_by_data_field_id(data_field.id)
-      return value.filter.id if value && value.filter
-      return data_field.default_filter.id if data_field.default_filter
-    end
   end
   
   named_scope :published, :conditions => {:is_published => true}, :order => "articles.created_at DESC"
+  
+  accepts_nested_attributes_for :data_values
   
   # Stores a cache of the data values for this 
   # article for the life of this instance.  
