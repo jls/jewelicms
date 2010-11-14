@@ -11,7 +11,7 @@
 
 <%= error_messages_for :article %>
 
-<% form_for @article, :url => (@article.new_record?) ? admin_articles_path : admin_article_path(@article) do |f| %>
+<%= form_for @article, :url => (@article.new_record?) ? admin_articles_path : admin_article_path(@article) do |f| %>
   <div id="article-fields" class="span-12 last">
     <%= check_box_tag 'preview_option', 1, false, :style => 'display:none' %>
     <%= f.hidden_field :channel_id %>
@@ -24,7 +24,7 @@
       <%= f.text_field :slug, :size => "50" %><br/>
       <span class="note">Also known as the "slug". Leave blank to have it generated for you</span>
 	  </p>
-  	<% f.fields_for :data_values do |data_value_fields| %>
+  	<%= f.fields_for :data_values do |data_value_fields| %>
   	  <%= data_value_fields.hidden_field :data_field_id %>
   	  <div class="data-value-title-area">
     	  <%= data_value_fields.label :data_value, data_value_fields.object.data_field.label  %>
@@ -33,7 +33,7 @@
         	</div> <!-- .data-value-title-area -->
     	  <% else %>
     	    <div class="formatting-options">
-    	      Format: <%= data_value_fields.collection_select :filter_id, Filter.find(:all), :id, :name, :include_blank => 'None' %>
+    	      Format: <%= data_value_fields.collection_select :filter_id, Filter.all, :id, :name, :include_blank => 'None' %>
     	    </div>
     	    </div> <!-- .data-value-title-area -->
     	    <div class="text-field">
@@ -73,7 +73,7 @@
 		  <div class="group">
 			  <!-- author -->
 		    <label for="article_author_id">Author:</label> 
-		    <%= f.collection_select :author_id, User.find(:all), :id, :name %>				
+		    <%= f.collection_select :author_id, User.all, :id, :name %>				
 		  </div>
 			<div class="group">
 		    <!-- is published? -->

@@ -1,7 +1,7 @@
 <h2>Edit Channel</h2>
 <%= error_messages_for :channel %>
 
-<% form_for @channel, :url => (@channel.new_record?) ? admin_channels_path : admin_channel_path(@channel) do |f| %>
+<%= form_for @channel, :url => (@channel.new_record?) ? admin_channels_path : admin_channel_path(@channel) do |f| %>
   <fieldset>
     <legend>Freshy Fresh</legend>
     <p>
@@ -21,7 +21,7 @@
 	  <fieldset>
 		<legend>Advanced</legend>
       <label for="channel_renders_as_channel_id">Renders Same As</label>
-      <%= f.collection_select :renders_as_channel_id, Channel.find(:all), :id, :name, :include_blank => true %><br/>
+      <%= f.collection_select :renders_as_channel_id, Channel.all, :id, :name, :include_blank => true %><br/>
       <span class="note">Leave blank to use the templates with the same name as this channel.</span>
 	    </fieldset>
     </p>

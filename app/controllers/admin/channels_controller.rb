@@ -1,7 +1,7 @@
 class Admin::ChannelsController < Admin::AdminController
   
   def index
-    @channels = Channel.find(:all)
+    @channels = Channel.all
   end
 
   def new 

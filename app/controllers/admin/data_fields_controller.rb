@@ -4,7 +4,7 @@ class Admin::DataFieldsController < Admin::AdminController
     if params[:channel_id]
       @data_fields = Channel.find(params[:channel_id]).data_fields
     else
-      @data_fields = DataField.find(:all)
+      @data_fields = DataField.all
     end
   end
 

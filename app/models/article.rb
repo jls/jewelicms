@@ -28,7 +28,7 @@ class Article < ActiveRecord::Base
     end
   end
   
-  named_scope :published, :conditions => {:is_published => true}, :order => "articles.created_at DESC"
+  scope :published, where(:is_published => true).order("articles.created_at DESC")
   
   accepts_nested_attributes_for :data_values
   
@@ -45,7 +45,7 @@ class Article < ActiveRecord::Base
   # with the given label.
   def value_for label, filtered = true
     self.values_cache ||= {}
-    self.values_cache["#{label}_#{filtered}"] ||= self.data_values.value_for label, filtered
+    self.values_cache["#{label}_#{filtered}"] ||= self.data_values.value_for(label, filtered).html_safe
   end
   
   # Convenience method that combines most of the common
@@ -106,29 +106,29 @@ class Article < ActiveRecord::Base
     opts[:author] = normalize_to_string(opts[:author]) if opts[:author]
     
     channels = opts[:channels].to_s if opts[:channels] && opts[:channels].is_a?(Symbol)
-    
-    find_options = {:include => []}
-    find_options[:include].push(:channel) if opts.include? :channel
-    find_options[:include].push(:categories) if opts.include? :category
-    find_options[:include].push(:author) if opts.include? :author
-    
-    find_options[:limit] = opts[:limit] if opts.include? :limit
+
+    current_scope = self.scoped 
+    current_scope = current_scope.includes(:channel) if opts.include? :channel
+    current_scope = current_scope.includes(:categories) if opts.include? :category
+    current_scope = current_scope.includes(:author) if opts.include? :author
+
+    current_scope = current_scope.limit(opts[:limit]) if opts.include? :limit
     
     # Add the sort
-    find_options[:order] = "articles.created_at #{opts[:order].to_s}"
+    current_scope = current_scope.order("articles.created_at #{opts[:order].to_s}")
     
     # Start building the conditions.
-    find_options[:conditions] = {}
-    find_options[:conditions]["articles.slug"] = opts[:slug] if opts.include? :slug
-    find_options[:conditions]["channels.slug"] = opts[:channel] if opts.include? :channel
-    find_options[:conditions]["categories.slug"] = opts[:category] if opts.include? :category
-    find_options[:conditions]["users.login"] = opts[:author] if opts.include? :author
-    find_options[:conditions]["is_published"] = opts[:published]
+    current_scope = current_scope.where("articles.slug" => opts[:slug]) if opts.include? :slug
+    current_scope = current_scope.where('channels.slug' => opts[:channel]) if opts.include? :channel
+    current_scope = current_scope.where('categories.slug' => opts[:category]) if opts.include? :category
+    current_scope = current_scope.where('users.login' => opts[:author]) if opts.include? :author
+    current_scope = current_scope.where('articles.is_published' => opts[:published]) 
+    
 
     if opts.include? :per_page
-      self.find(:all, find_options).paginate(:per_page => opts[:per_page], :page => opts[:page])
+      current_scope.paginate(:per_page => opts[:per_page], :page => opts[:page])
     else
-      self.find(:all, find_options)
+      current_scope
     end
     
   end

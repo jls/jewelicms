@@ -1,18 +1,18 @@
 <h2>New Channel</h2>
 <%= error_messages_for :channel %>
 
-<% form_for @channel, :url => (@channel.new_record?) ? admin_channels_path : admin_channel_path(@channel) do |f| %>
+<%= form_for @channel, :url => (@channel.new_record?) ? admin_channels_path : admin_channel_path(@channel) do |f| %>
   <fieldset>
     <legend>Freshy Fresh</legend>
     <p>
       <label for="channel_name">Name</label><br/>
       <%= f.text_field :name %>
-      <% fields_for :copy do |copy_fields| -%>
-		<% if Channel.find(:all).empty? %>
+      <%= fields_for :copy do |copy_fields| -%>
+		<% if Channel.all.empty? %>
 			<br/>A channel is a bucket for content for example <strong>blog</strong>, <strong>portfolio</strong>, or <strong>appointments</strong>.
 		<% else %>
         	from existing? 
-        	<%= copy_fields.collection_select :channel_id, Channel.find(:all), :id, :name,  :prompt => "No" %>
+        	<%= copy_fields.collection_select :channel_id, Channel.all, :id, :name,  :prompt => "No" %>
 		<% end %>
       <% end -%>
     </p>

@@ -17,8 +17,8 @@ class Comment < ActiveRecord::Base
   validates_presence_of :name, :email, :body, :article_id
   belongs_to :article
   
-  named_scope :published, :conditions => {:is_published => true}
-  named_scope :latest, :order => "created_at DESC"
+  scope :published, where(:is_published => true)
+  scope :latest, order("created_at DESC")
   
   def check_for_spam!
     # If the Raskismet key is not

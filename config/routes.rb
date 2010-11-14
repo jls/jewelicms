@@ -1,59 +1,90 @@
-ActionController::Routing::Routes.draw do |map|
-  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
-  map.login '/login', :controller => 'sessions', :action => 'new'
-  map.resource :session
-  map.resources :comments
+Jewelicms::Application.routes.draw do |map|
   
-  map.namespace :admin do |admin|
-    admin.resources :categories
-    admin.resources :channels
-    admin.resources :data_values
-    admin.resources :articles
-    admin.resources :settings 
-    admin.resources :users
-    admin.resources :data_fields
-    admin.resources :comments, :member => {:publish => :get, :spam => :post, :not_spam => :post}
+  match "/logout", :to => "sessions#destroy", :as => :logout
+  match "/login", :to => "sessions#new", :as => :login
+  resource :session
+  resources :comments
+  
+  namespace :admin do 
+    match '/', :to => "admin#index"
+    resources :categories
+    resources :channels
+    resources :data_values
+    resources :articles
+    resources :settings 
+    resources :users
+    resources :data_fields
+    resources :comments do
+      member do 
+        get 'publish'
+        post 'spam'
+        post 'not_spam'
+      end
+    end
   end
-  map.connect 'admin', :controller => "Admin::Admin"
+    
+  root :to => "channel#home" 
+  match ':renders_with/(*parts)(.:format)', :to => "channel#index", :as => :jeweli, :constraints => {:format => /rss|html|js|xml/}
   
-  map.root :controller => :channel, :action => :home
-  map.jeweli ':renders_with/*parts.:format', :controller => :channel, :action => :index
-  
-  map.channel_view ':renders_with.:format', :controller => :channel, :action => :index
-  map.render_view ':renders_with.:format', :controller => :channel, :action => :index
-  map.category_view ':channel_slug/:category_slug.:format', :controller => :channel, :action => :category_by_slug
-  map.article_view ':renders_with/:article_slug', :controller => :channel, :action => :article_by_slug
+  # map.channel_view ':renders_with.:format', :controller => :channel, :action => :index
+  # map.render_view ':renders_with.:format', :controller => :channel, :action => :index
+  # map.category_view ':channel_slug/:category_slug.:format', :controller => :channel, :action => :category_by_slug
+  # map.article_view ':renders_with/:article_slug', :controller => :channel, :action => :article_by_slug
 
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
-  
+  # The priority is based upon order of creation:
+  # first created -> highest priority.
+
   # Sample of regular route:
-  #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
+  #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:
-  #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
+  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   map.resources :products
+  #   resources :products
 
   # Sample resource route with options:
-  #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
+  #   resources :products do
+  #     member do
+  #       get 'short'
+  #       post 'toggle'
+  #     end
+  #
+  #     collection do
+  #       get 'sold'
+  #     end
+  #   end
 
   # Sample resource route with sub-resources:
-  #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
-  
+  #   resources :products do
+  #     resources :comments, :sales
+  #     resource :seller
+  #   end
+
   # Sample resource route with more complex sub-resources
-  #   map.resources :products do |products|
-  #     products.resources :comments
-  #     products.resources :sales, :collection => { :recent => :get }
+  #   resources :products do
+  #     resources :comments
+  #     resources :sales do
+  #       get 'recent', :on => :collection
+  #     end
   #   end
 
   # Sample resource route within a namespace:
-  #   map.namespace :admin do |admin|
-  #     # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
-  #     admin.resources :products
+  #   namespace :admin do
+  #     # Directs /admin/products/* to Admin::ProductsController
+  #     # (app/controllers/admin/products_controller.rb)
+  #     resources :products
   #   end
-  
+
+  # You can have the root of your site routed with "root"
+  # just remember to delete public/index.html.
+  # root :to => "welcome#index"
+
+  # See how all your routes lay out with "rake routes"
+
+  # This is a legacy wild controller route that's not recommended for RESTful applications.
+  # Note: This route will make all actions in every controller accessible via GET requests.
+  # match ':controller(/:action(/:id(.:format)))'
 end

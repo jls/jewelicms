@@ -6,7 +6,8 @@ class Category < ActiveRecord::Base
   
   belongs_to :channel
   has_and_belongs_to_many :articles
-  named_scope :all_public, :order => "channel_id desc"
+  
+  scope :all_public, order("channel_id desc")
   
   protected
   

@@ -1,23 +1,23 @@
 <h2><%= (@data_field.new_record?) ? "New" : 'Editing' %> Data Field for a Channel</h2>
 <%= error_messages_for :data_field %>
 
-<% form_for @data_field, :url => (@data_field.new_record?) ? admin_data_fields_path : admin_data_field_path(@data_field) do |f| %>
+<%= form_for @data_field, :url => (@data_field.new_record?) ? admin_data_fields_path : admin_data_field_path(@data_field) do |f| %>
   <p>
     <label for="data_field_label">Label</label><br/>
     <%= f.text_field :label %>
   </p>
   <p>
     <label for="data_field_channel_id">Which Channel?</label><br/>
-    <%= f.collection_select :channel_id, Channel.find(:all), :id, :name %>
+    <%= f.collection_select :channel_id, Channel.all, :id, :name %>
   </p>
   <fieldset>
   <p>
     <label for="data_field_data_field_type_id">Type</label><br/>
-    <%= f.collection_select :data_field_type_id, DataFieldType.find(:all), :id, :name %>
+    <%= f.collection_select :data_field_type_id, DataFieldType.all, :id, :name %>
   </p>
   <p>
     <label for="data_field_default_filter_id">Format</label><br/>
-    <%= f.collection_select :default_filter_id, Filter.find(:all), :id, :name, :include_blank => 'None' %>
+    <%= f.collection_select :default_filter_id, Filter.all, :id, :name, :include_blank => 'None' %>
   </p>
   </fieldset>
 

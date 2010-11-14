@@ -1,8 +1,8 @@
+.bundle
 .autotest
 .DS_Store
 config/database.yml
 config/initializers/rakismet.rb
-db/test.sqlite3
-db/development.sqlite3
-log
-tmp/
+db/*.sqlite3
+log/*.log
+tmp/**/*

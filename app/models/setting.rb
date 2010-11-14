@@ -9,7 +9,7 @@ class Setting < ActiveRecord::Base
     if self.count == 0
       self.create(DEFAULTS)
     end
-    self.find(:first)
+    self.first
   end
   
 end

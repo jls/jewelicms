@@ -1,9 +1,11 @@
+<!DOCTYPE html>
 <html>
   <head>
-  <!-- local stylesheets, images and javascripts are stored in /public/ -->
+    <!-- local stylesheets, images and javascripts are stored in /public/ -->
+    <%= csrf_meta_tag %>
   </head>
   <body>
-  <!-- New to Rails? http://guides.rubyonrails.org/layouts_and_rendering.html#understanding-yield -->
-  <%= yield %>
+    <!-- New to Rails? http://guides.rubyonrails.org/layouts_and_rendering.html#understanding-yield -->
+    <%= yield %>
   </body>
 </html>
