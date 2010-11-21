@@ -1,0 +1,8 @@
+Description:
+    Generates the templates for different styles of web apps you can create with Jeweli
+
+Example:
+    rails generate jeweli jewelicms.com
+
+    This will create:
+        All of the view templates and data seeds used on jewelicms.com
