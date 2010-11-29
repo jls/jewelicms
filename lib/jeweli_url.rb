@@ -49,6 +49,12 @@ class JeweliUrl
     url_params = self.params
     return unless url_params
     
+    # parts is now a string instead of an array so we will split
+    # it ourselves.
+    if parts = url_params[:parts]
+      parts = parts.split('/') if parts
+    end
+    
     # The render template will always be stored
     # in the renders_with option in the params.
     template = url_params[:renders_with]
@@ -57,19 +63,19 @@ class JeweliUrl
     # with the same name as the template.
     self.channel = ((only_public) ? Channel.all_public.find_by_slug(template) : Channel.find_by_slug(template)) if template
     
-    return unless url_params[:parts] && url_params[:parts].size > 0
+    return unless parts && parts.size > 0
     
     # first part after the template can either be
     # an article (which will take precedence over a category),
     # a category (which will take precedence over a date),
     # or a year
-    first_part = url_params[:parts].shift
+    first_part = parts.shift
         
     self.article = (only_public) ? Article.published.find_by_slug(first_part) : Article.find_by_slug(first_part)
     
     # If we have an article then we we will remove the article
     # slug part and save the rest of the parts in extra_parts
-    self.extra_parts = url_params[:parts] if self.article
+    self.extra_parts = parts if self.article
     return if self.article
     
     # The first part could also be a category if it wasn't
@@ -77,7 +83,7 @@ class JeweliUrl
     self.category = Category.find_by_slug(first_part)
     # If we have a category then unless the 
     # next part is a date then we are done.
-    self.extra_parts = url_params[:parts] if self.category
+    self.extra_parts = parts if self.category
     
         
   end
