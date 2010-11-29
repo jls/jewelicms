@@ -45,7 +45,9 @@ class Article < ActiveRecord::Base
   # with the given label.
   def value_for label, filtered = true
     self.values_cache ||= {}
-    self.values_cache["#{label}_#{filtered}"] ||= self.data_values.value_for(label, filtered).html_safe
+    self.values_cache["#{label}_#{filtered}"] ||= self.data_values.value_for(label, filtered)
+    cached_value = self.values_cache["#{label}_#{filtered}"]
+    (cached_value) ? cached_value.html_safe : cached_value
   end
   
   # Convenience method that combines most of the common
