@@ -10,7 +10,7 @@
     </tr>
     <% @data_fields.each do |field| -%>
       <tr>
-        <td><%= field.channel.name %></td>
+        <td><%= (field.channel) ? field.channel.name : "Unknown Channel" %></td>
         <td><%= field.label %></td>
         <td><%= field.data_field_type.name %></td>
         <td><%= (field.default_filter) ? field.default_filter.name : 'None' %></td>
