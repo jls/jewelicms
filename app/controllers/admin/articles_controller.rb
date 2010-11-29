@@ -1,8 +1,7 @@
 class Admin::ArticlesController < Admin::AdminController
   
   def index
-    @articles = Article.includes(:comments, :channel, :categories, :author)
-      .paginate :page => params[:page], :order => "created_at DESC"
+    @articles = Article.includes(:comments, :channel, :categories, :author).paginate :page => params[:page], :order => "created_at DESC"
   end
   
   def new
