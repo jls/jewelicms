@@ -30,6 +30,12 @@ gem "dynamic_form" # For error_messages helper
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
-# group :development, :test do
-#   gem 'webrat'
-# end
+group :development, :test do
+  gem 'factory_girl'
+  gem 'factory_girl_rails'
+  gem 'autotest'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'webrat'
+  gem 'mocha'
+end
