@@ -25,11 +25,6 @@ Jewelicms::Application.routes.draw do |map|
     
   root :to => "channel#home" 
   match ':renders_with/(*parts)(.:format)', :to => "channel#index", :as => :jeweli, :constraints => {:format => /rss|html|js|xml/}
-  
-  # map.channel_view ':renders_with.:format', :controller => :channel, :action => :index
-  # map.render_view ':renders_with.:format', :controller => :channel, :action => :index
-  # map.category_view ':channel_slug/:category_slug.:format', :controller => :channel, :action => :category_by_slug
-  # map.article_view ':renders_with/:article_slug', :controller => :channel, :action => :article_by_slug
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

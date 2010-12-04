@@ -8,26 +8,17 @@ class ChannelController < ApplicationController
   
   def index
     
-    jeweli_url = JeweliUrl.new params
-  
-    @channel = jeweli_url.channel
+    @jeweli_url = JeweliUrl.new params
+    @channel = @jeweli_url.channel
     # We don't have a channel that matches the renders_with param
     # so we assume they intend to have a matching template in the templates directory.
-    # In the future we should check to see if the template exists first.
-    return render(:template => "templates/#{params[:renders_with]}", :layout => !request.xhr?) unless @channel
+    render_standalone_template and return unless @channel
+
     @render_as = @channel.render_as || @channel
     
-    if jeweli_url.is_channel_page?
-      @categories = @channel.categories
-      @articles = (request.format.html?) ? @channel.articles.published.paginate(:page => params[:page]): @channel.articles.published
-    elsif jeweli_url.is_category_page?
-      @category = jeweli_url.category
-      @categories = [@category]
-      @articles = (request.format.html?) ? @category.articles.published.paginate(:page => params[:page]) : @category.articles.published
-    elsif jeweli_url.is_article_page?
-      @article = jeweli_url.article
-      return render(:action => :article_by_slug, :layout => !request.xhr?)
-    end
+    load_records_for_channel if @jeweli_url.is_channel_page?
+    load_records_for_category if @jeweli_url.is_category_page?
+    (load_records_for_article && render(:action => :article_by_slug, :layout => !request.xhr?)) and return if @jeweli_url.is_article_page?
     
     respond_to do |wants|
       wants.html {
@@ -37,40 +28,34 @@ class ChannelController < ApplicationController
     end
   end
   
-  def category_by_slug
-    @channel = Channel.all_public.find_by_slug(params[:channel_slug])
-    return redirect_to '/404.html' unless @channel
-    @render_as = @channel.render_as || @channel
-    @category = @channel.categories.find_by_slug(params[:category_slug])
-    @categories = [@category]
-    
-    respond_to do |wants|
-      wants.html { 
-        @articles = @category.articles.published.paginate(:page => params[:page]) 
-        render(:action => :index, :layout => !request.xhr?)
-      }
-      wants.rss { 
-        @articles = @category.articles.published 
-        render(:action => :index)
-      }
-    end
+  protected 
+  
+  def load_records_for_channel
+    @categories = @channel.categories
+    @articles = @channel.articles.published
+    @articles = @articles.paginate(:page => params[:page]) if request.format.html?
   end
   
-  def article_by_slug
-    @channel = Channel.all_public.find_by_slug(params[:renders_with])
-    @article = Article.find_by_slug(params[:article_slug])    
-    return render(:template => "templates/#{params[:renders_with]}", :layout => !request.xhr?) unless @channel
-
-    # We do have a channel so 
-    # follow the normal route of using
-    # our built in template (views/channel/article_by_slug.html.erb)
-    # to render the article
-    @render_as = @channel.render_as || @channel
-    
-    respond_to do |wants|
-      wants.html{ render(:layout => !request.xhr?) }
+  def load_records_for_category
+    @category = @jeweli_url.category
+    @categories = [@category]
+    @articles = @category.articles.published
+    @articles = @articles.paginate(:page => params[:page]) if request.format.html?
+  end
+  
+  def load_records_for_article
+    @article = @jeweli_url.article
+  end
+  
+  # Attempts to render a template in the templates directory
+  # that matches the renders_with parameter.  If the template
+  # doesn't exist then a redirect to 404.html is performed.
+  def render_standalone_template
+    begin
+      return render(:template => "templates/#{params[:renders_with]}", :layout => !request.xhr?) 
+    rescue ActionView::MissingTemplate
+      redirect_to('/404.html')
     end
-    
   end
   
 end
