@@ -1,7 +1,0 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-text_field_type:
-  name: Text
-
-rich_text_field_type:
-  name: Rich Text

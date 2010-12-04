@@ -1,9 +1,0 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  site_name: MyString
-  show_help: false
-
-two:
-  site_name: MyString
-  show_help: false
