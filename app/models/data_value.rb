@@ -16,7 +16,7 @@ class DataValue < ActiveRecord::Base
   protected
   
   def markdowned_value
-    RDiscount.new(self.data_value).to_html
+    RDiscount.new(self.data_value).to_html if self.data_value
   end
   
   def textiled_value
