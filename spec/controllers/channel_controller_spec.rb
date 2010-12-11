@@ -4,6 +4,8 @@ describe ChannelController do
   render_views
   
   def create_template(filename)
+    file_content = "Template #{filename}"
+    file_content += " <%= will_paginate @articles %>" if filename == "_jewelitestingprojects_list.html.erb"
     File.open(Rails.root + 'app/views/templates/' + filename, 'w') {|f| f.write("Template #{filename}") }
   end
   
@@ -83,6 +85,37 @@ describe ChannelController do
       get :index, :renders_with => 'jewelitestingprojects', :parts => [@category.slug, @article.slug]
       response.should render_template('article_by_slug')
       response.should contain("Template _jewelitestingprojects_item.html.erb")
+    end
+    
+    it "should render list template if renders_with is valid but the next part is not a category or article slug" do
+      @channel = Factory(:channel, :name => 'TProjects', :slug => 'jewelitestingprojects')
+      @article = Factory(:article, :channel => @channel)
+      @category = Factory(:category, :channel => @channel)
+      @article.categories << @category
+      
+      get :index, :renders_with => 'jewelitestingprojects', :parts => "random"
+      response.should render_template('index')
+      response.should contain("Template _jewelitestingprojects_list.html.erb")
+    end
+    
+    it "should render list template if user is not logged in and the article slug is not published" do
+      @channel = Factory(:channel, :name => 'TProjects', :slug => 'jewelitestingprojects')
+      @article = Factory(:article, :channel => @channel, :is_published => false)
+      
+      get :index, :renders_with => 'jewelitestingprojects', :parts => @article.slug
+      response.should render_template('index')
+      response.should contain('Template _jewelitestingprojects_list.html.erb')      
+    end
+    
+    it "should render article template if user is logged in and the article slug is published" do
+      @channel = Factory(:channel, :name => 'TProjects', :slug => 'jewelitestingprojects')
+      @author = Factory(:user)
+      @article = Factory(:article, :channel => @channel, :author => @author, :is_published => false)
+      
+      session[:user_id] = @author.id
+      get :index, :renders_with => 'jewelitestingprojects', :parts => @article.slug
+      response.should render_template('article_by_slug')
+      response.should contain('Template _jewelitestingprojects_item.html.erb')
     end
     
   end

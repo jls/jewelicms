@@ -8,10 +8,10 @@ class ChannelController < ApplicationController
   
   def index
     
-    @jeweli_url = JeweliUrl.new params
+    @jeweli_url = JeweliUrl.new params, current_user.nil?
     @channel = @jeweli_url.channel
     # We don't have a channel that matches the renders_with param
-    # so we assume they intend to have a matching template in the templates directory.
+    # so we render a matching template in the templates directory.
     render_standalone_template and return unless @channel
 
     @render_as = @channel.render_as || @channel
