@@ -3,7 +3,7 @@
   <div id="preview-container" class="article-preview">
     <h3>Preview</h3>
     <% @article.data_values.each do |data_value| -%>
-      <p><%= data_value.filtered_value %></p>
+      <p><%= raw data_value.filtered_value %></p>
     <% end -%>
     <a href="#" onclick="document.getElementById('preview-container').style.display='none';return false;">Close Preview</a>
   </div>
