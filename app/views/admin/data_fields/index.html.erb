@@ -2,23 +2,35 @@
 
 <% if @data_fields.length != 0 -%>
   <table id="the_list">
-    <tr>
-      <th>Channel</th>
-      <th>Label</th>
-      <th>Type</th>
-      <th>Format</th>
-    </tr>
-    <% @data_fields.each do |field| -%>
+    <thead>
       <tr>
+        <th>Channel</th>
+        <th>Label</th>
+        <th>Type</th>
+        <th>Format</th>
+        <th>Actions</th>
+        <% if @orderable -%>
+          <th>Order</th>
+        <% end -%>
+      </tr>
+    </thead>
+    <tbody id="data_fields">
+    <% @data_fields.each do |field| -%>
+      <tr id="field-<%= field.id %>">
         <td><%= (field.channel) ? field.channel.name : "Unknown Channel" %></td>
         <td><%= field.label %></td>
         <td><%= field.data_field_type.name %></td>
         <td><%= (field.default_filter) ? field.default_filter.name : 'None' %></td>
         <td><%= link_to 'Edit', edit_admin_data_field_path(field)%> |
             <%= link_to 'Destroy', admin_data_field_path(field), :method => :delete, :confirm => "Are you sure?\n\nThis will destroy all of the values for this field specified on any articles."%></td>
+        <% if @orderable -%><td class="handle">[drag]</td><% end -%>
       </tr>
     <% end %>
+    </tbody>
   </table>
+  <% if @orderable -%>
+    <%= sortable_element('data_fields', :url => update_positions_admin_data_fields_path, :handle => 'handle', :tag => 'tr') %>
+  <% end -%>
 <% else %>
 	<p class="no-content">No custom article fields yet.</p>
 <% end %>

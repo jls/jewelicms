@@ -27,7 +27,9 @@ body {
 label {
 	text-transform: capitalize;
 }
-
+.handle{
+	cursor: move;
+}
 /* Lists */
 
 ul {

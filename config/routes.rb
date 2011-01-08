@@ -13,7 +13,9 @@ Jewelicms::Application.routes.draw do |map|
     resources :articles
     resources :settings 
     resources :users
-    resources :data_fields
+    resources :data_fields do
+      post :update_positions, :on => :collection
+    end
     resources :comments do
       member do 
         get 'publish'
