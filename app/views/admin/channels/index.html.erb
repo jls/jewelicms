@@ -14,7 +14,7 @@
 	      <td><%= channel.name %></td>
 	      <td><%= channel.slug %></td>
 	      <td><%= (channel.is_public?) ? "Yes" : "No" %></td>
-	      <td><%= channel.data_fields.map(&:label).join(", ") %> <%= link_to 'Edit', admin_data_fields_path(:channel_id => channel)%></td>
+	      <td><%= channel.data_fields.ordered.map(&:label).join(", ") %> <%= link_to 'Edit', admin_data_fields_path(:channel_id => channel)%></td>
 	      <td><%= link_to 'New Article', new_admin_article_path(:channel_id => channel) %> | <%= link_to 'Edit', edit_admin_channel_path(channel)%> | <%= link_to 'Delete', admin_channel_path(channel), :method => :delete, :confirm => "Deleting a channel deletes all articles associated with that channel. Are you sure?" %>
 		</td>
 	    </tr>
