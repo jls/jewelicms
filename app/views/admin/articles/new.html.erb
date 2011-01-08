@@ -69,7 +69,12 @@
 		  </div>
 	  </fieldset>
 		<fieldset>
-		  <legend>Authorship</legend>
+		  <legend>Authorship &amp; Publishing</legend>
+		  <div class="group">
+		    <!-- Created Date -->
+		    <%= f.label :created_at -%>:
+		    <%= f.date_select :created_at, :order => [:month, :day, :year] %>
+		  </div>
 		  <div class="group">
 			  <!-- author -->
 		    <label for="article_author_id">Author:</label> 
