@@ -8,7 +8,7 @@ class Admin::ArticlesController < Admin::AdminController
     @channel = Channel.find(params[:channel_id])
     @article = current_user.articles.new(:channel => @channel, :is_published => true)
     # Add the default data fields defined for this channel
-    @channel.data_fields.each do |data_field|
+    @channel.data_fields.ordered.each do |data_field|
       @article.data_values.build(
         :data_field => data_field,
         :filter_id => data_field.default_filter_id
