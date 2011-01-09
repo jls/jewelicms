@@ -1,35 +1,33 @@
 <h2>Articles</h2>
 <% if @articles.length != 0 -%>
 	<table>
-	  <tr>
-	    <th>Channel</th>
-	    <th>Title</th>
-	    <th>Author</th>	
-	    <th>Category</th>
-	    <th>Published</th>
-	    <th>Comments</th>
-	    <th>Actions</th>
-	  </tr>
-	  <% prev_category = nil %>
-	  <% prev_style = 'alt' %>
-
-	  <% @articles.each do |article| -%>
-	    <% unless prev_category == article.channel %>
-	      <% prev_style = cycle('alt', '') %>
-	      <% prev_category = article.channel %>
+	  <thead>
+  	  <tr>
+  	    <th>Channel</th>
+  	    <th>Title</th>
+  	    <th>Author</th>	
+  	    <th>Category</th>
+  	    <th>Published</th>
+  	    <th>Comments</th>
+  	    <th>Actions</th>
+  	  </tr>
+	  </thead>
+	  <tbody>
+	    <% @articles.each do |article| -%>
+	    
+	      <tr>
+  	      <td><%= article.channel.name %></td>
+  	      <td><%= link_to article.title, edit_admin_article_path(article) %></td>
+  	      <td><%= article.author ? link_to(article.author.name, edit_admin_user_path(article.author)) : 'Author uncredited' %></td>
+  	      <td><%= article.categories.map(&:name).join(", ") unless article.categories.empty? %></td>
+  	      <td><%= (article.is_published?.to_s == "true") ? "yes" : "no" %></td>
+  	      <td><%= link_to article.comments.count, admin_comments_path %> </td>
+  	      <td class="table-category-actions">
+  	        <%= link_to 'Edit', edit_admin_article_path(article)%> | <%= link_to 'Delete', admin_article_path(article), :method => :delete, :confirm => "Are you sure?" %>
+  	      </td>
+  	    </tr>
 	    <% end %>
-	    <tr <%= "class=\"#{prev_style}\""%>>
-	      <td><%= article.channel.name %></td>
-	      <td><%= link_to article.title, edit_admin_article_path(article) %></td>
-	      <td><%= article.author ? link_to(article.author.name, edit_admin_user_path(article.author)) : 'Author uncredited' %></td>
-	      <td><%= article.categories.map(&:name).join(", ") unless article.categories.empty? %></td>
-	      <td><%= (article.is_published?.to_s == "true") ? "yes" : "no" %></td>
-	      <td><%= link_to article.comments.count, admin_comments_path %> </td>
-	      <td class="table-category-actions">
-	        <%= link_to 'Edit', edit_admin_article_path(article)%> | <%= link_to 'Delete', admin_article_path(article), :method => :delete, :confirm => "Are you sure?" %>
-	      </td>
-	    </tr>
-	  <% end %>
+	  </tbody>
 	</table>
 <% else %>
 	<p class="no-content">None yet. Choose "New Article" above.</p>

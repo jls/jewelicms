@@ -2,6 +2,7 @@
 
 <% if @channels.length != 0 -%>
 	<table>
+	  <thead>
 	  <tr>
 	    <th>Name</th>
 	    <th>Slug</th>
@@ -9,6 +10,8 @@
 	    <th>Article Fields (<%= link_to 'See all', admin_data_fields_path %>)</th>
 	    <th>Actions</th>
 	  </tr>
+	  </thead>
+	  <tbody>
 	  <% @channels.each do |channel| -%>
 	    <tr>
 	      <td><%= channel.name %></td>
@@ -19,6 +22,7 @@
 		</td>
 	    </tr>
 	  <% end %>
+	  </tbody>
 	</table>
 <% else %>
 	<p class="no-content">None yet.</p>
