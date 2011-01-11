@@ -1,1 +1,10 @@
-/* master.css contains styles. you can use any stylesheet name you wish */
+/* master.css */
+
+html, body {
+	font: normal normal normal 12px/normal Menlo, Monaco, 'Lucida Console', Arial, 'Courier New', monospaced;	
+}
+
+header {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}

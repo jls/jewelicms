@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <!-- local stylesheets, images and javascripts are stored in /public/ -->
-    <%= csrf_meta_tag %>
-  </head>
-  <body>
-    <!-- New to Rails? http://guides.rubyonrails.org/layouts_and_rendering.html#understanding-yield -->
-    <%= yield %>
-  </body>
+<html lang="en-US" dir="ltr">
+	<head>
+		<meta charset="utf-8" />
+		
+	    <%= csrf_meta_tag %>
+		
+		<title>
+			Hi, I am not Sam
+		</title>
+
+		<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js", "application" -%>
+		
+		<%= stylesheet_link_tag "reset", "blueprint/src/grid", "blueprint/src/typography", "master" -%>
+		
+		<!--[if IE]>
+		<%= stylesheet_link_tag "blueprint/ie" -%>
+		<![endif]-->
+	</head>
+	<body>
+	  <section class="container">
+		<%= yield %>
+  	  </section>
 </html>
+
