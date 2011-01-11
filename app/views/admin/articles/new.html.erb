@@ -3,7 +3,7 @@
   <div id="preview-container" class="article-preview">
     <h3>Preview</h3>
     <% @article.data_values.each do |data_value| -%>
-      <p><%= data_value.filtered_value %></p>
+      <p><%= raw data_value.filtered_value %></p>
     <% end -%>
     <a href="#" onclick="document.getElementById('preview-container').style.display='none';return false;">Close Preview</a>
   </div>
@@ -69,7 +69,12 @@
 		  </div>
 	  </fieldset>
 		<fieldset>
-		  <legend>Authorship</legend>
+		  <legend>Authorship &amp; Publishing</legend>
+		  <div class="group">
+		    <!-- Created Date -->
+		    <%= f.label :created_at -%>:
+		    <%= f.date_select :created_at, :order => [:month, :day, :year] %>
+		  </div>
 		  <div class="group">
 			  <!-- author -->
 		    <label for="article_author_id">Author:</label> 

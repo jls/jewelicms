@@ -2,21 +2,25 @@
 
 <% if @categories.length != 0 -%>
 	<table>
-	  <tr>
-	    <th>Name</th>
-	    <th>Channel</th>
-	    <th>Slug</th>
-	    <th>Actions</th>
-	  </tr>
-	  <% @categories.each do |category| -%>
-	    <tr>
-	      <td><%= category.name %></td>
-	      <td><%= category.channel.name %></td>
-	      <td><%= category.slug %></td>
-	      <td><%= link_to 'Edit', edit_admin_category_path(category)%> | <%= link_to 'Delete', admin_category_path(category), :method => :delete, :confirm => "Deleting a category does NOT delete any articles using that category. Are you sure?" %>
-		</td>
-	    </tr>
-	  <% end %>
+	  <thead>
+  	  <tr>
+  	    <th>Name</th>
+  	    <th>Channel</th>
+  	    <th>Slug</th>
+  	    <th>Actions</th>
+  	  </tr>
+  	</thead>
+  	<tbody>
+  	  <% @categories.each do |category| -%>
+  	    <tr>
+  	      <td><%= category.name %></td>
+  	      <td><%= category.channel.name %></td>
+  	      <td><%= category.slug %></td>
+  	      <td><%= link_to 'Edit', edit_admin_category_path(category)%> | <%= link_to 'Delete', admin_category_path(category), :method => :delete, :confirm => "Deleting a category does NOT delete any articles using that category. Are you sure?" %>
+  		</td>
+  	    </tr>
+  	  <% end %>
+    </tbody>
 	</table>
 <% else %>
 	<p class="no-content">None yet.</p>

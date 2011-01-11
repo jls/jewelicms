@@ -2,9 +2,11 @@ class Admin::DataFieldsController < Admin::AdminController
   
   def index
     if params[:channel_id]
-      @data_fields = Channel.find(params[:channel_id]).data_fields
+      @data_fields = Channel.find(params[:channel_id]).data_fields.ordered
+      @orderable = true
     else
       @data_fields = DataField.all
+      @orderable = false
     end
   end
 
@@ -37,6 +39,13 @@ class Admin::DataFieldsController < Admin::AdminController
     @data_field.update_attributes(params[:data_field])
     flash[:notice] = 'Updated Data Field'
     redirect_to admin_data_fields_path
+  end
+  
+  def update_positions
+    params[:data_fields].each_with_index do |id, idx|
+      DataField.update_all(['position=?', idx+1], ['id=?', id])
+    end
+    render :nothing => true
   end
   
   def destroy
