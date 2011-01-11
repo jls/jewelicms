@@ -51,6 +51,7 @@ GEM
     mocha (0.9.9)
       rake
     nokogiri (1.4.4)
+    pg (0.10.0)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -103,6 +104,7 @@ DEPENDENCIES
   factory_girl
   factory_girl_rails
   mocha
+  pg
   rails (= 3.0.1)
   rdiscount
   rspec

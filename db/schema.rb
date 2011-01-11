@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(:version => 20110108184126) do
   create_table "data_values", :force => true do |t|
     t.integer  "article_id"
     t.integer  "data_field_id"
-    t.text     "data_value",    :limit => 255
+    t.text     "data_value"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "filter_id"
