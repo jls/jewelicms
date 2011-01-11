@@ -12,6 +12,8 @@ gem "rdiscount" # For Markdown
 gem "RedCloth" # For Textile
 gem "dynamic_form" # For error_messages helper
 
+gem "pg"
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
