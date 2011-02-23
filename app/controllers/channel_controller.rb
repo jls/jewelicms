@@ -18,13 +18,17 @@ class ChannelController < ApplicationController
     
     load_records_for_channel if @jeweli_url.is_channel_page?
     load_records_for_category if @jeweli_url.is_category_page?
-    (load_records_for_article && render(:action => :article_by_slug, :layout => !request.xhr?)) and return if @jeweli_url.is_article_page?
+    load_records_for_article if @jeweli_url.is_article_page?
     
     respond_to do |wants|
       wants.html {
+        render(:action => :article_by_slug, :layout => !request.xhr?) and return if @article
         render(:layout => !request.xhr?)
       }
       wants.rss
+      wants.json{
+        render(:json => @article.to_json(:include => {:data_values => {:include => [:data_field], :methods => :filtered_value}}))
+      }
     end
   end
   

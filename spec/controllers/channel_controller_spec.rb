@@ -118,6 +118,15 @@ describe ChannelController do
       response.should contain('Template _jewelitestingprojects_item.html.erb')
     end
     
+    it "should render json when an article is specified" do
+      @channel = Factory(:channel, :name => 'TProjects', :slug => 'jewelitestingprojects')
+      @article = Factory(:article, :channel => @channel)
+      
+      get :index, :renders_with => 'jewelitestingprojects', :parts => @article.slug, :format => :json
+      response.body.should == @article.to_json(:include => {:data_values => {:include => [:data_field], :methods => :filtered_value}})
+      
+    end
+    
   end
   
 end

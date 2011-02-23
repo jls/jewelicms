@@ -26,7 +26,11 @@ Jewelicms::Application.routes.draw do |map|
   end
     
   root :to => "channel#home" 
-  match ':renders_with/(*parts)(.:format)', :to => "channel#index", :as => :jeweli, :constraints => {:format => /rss|html|js|xml/}
+  match ':renders_with/(*parts).:format', :to => "channel#index", :as => :jeweli, :constraints => {:format => /rss|html|js|xml|json/}
+  # We have to have two routes here because we are using globbing
+  # and it will swallow the :format param if the :format param is optional.
+  # See for details: https://rails.lighthouseapp.com/projects/8994/tickets/1939-optimal-formatted-routes-breaks-format-requirements
+  match ':renders_with/(*parts)', :to => "channel#index", :as => :jeweli, :constraints => {:format => /rss|html|js|xml|json/}
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
