@@ -2,7 +2,7 @@ require 'jeweli_url'
 class Article < ActiveRecord::Base
 
   cattr_accessor :per_page
-  @@per_page = 10
+  @@per_page = 30
   
   include Sluggable
   before_validation :generate_slug
