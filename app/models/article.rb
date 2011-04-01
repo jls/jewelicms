@@ -32,6 +32,19 @@ class Article < ActiveRecord::Base
   
   accepts_nested_attributes_for :data_values
   
+  # Builds a new article for the given channel.
+  # The article will have data fields built as well.
+  def self.new_for_channel channel, article_opts = {}
+    article = Article.new({:channel_id => channel.id}.merge(article_opts))
+    channel.data_fields.ordered.each do |data_field|
+      article.data_values.build(
+        :data_field => data_field, 
+        :filter_id => data_field.default_filter_id
+      )
+    end
+    article
+  end
+  
   # Stores a cache of the data values for this 
   # article for the life of this instance.  
   # This is really taken care of by ActiveRecord caching
